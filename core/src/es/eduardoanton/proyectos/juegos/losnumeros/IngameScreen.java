@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.InputProcessor;
+
+import es.eduardoanton.proyectos.juegos.losnumeros.Ficha.FichaColor;
 
 
 
@@ -15,7 +18,8 @@ public class IngameScreen implements Screen {
 	private LosNumeros game;
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
-	private Texture fondo,red,marco,a1,a2,a3,r1,r2,r3;
+	private Texture fondo,red,marco,a1,a2,a3,r1,r2,r3,crono;
+	private InputProcessor iproc;
 	
 	public IngameScreen(LosNumeros game){
 		this.game = game;
@@ -33,6 +37,8 @@ public class IngameScreen implements Screen {
 		r1 = LosNumeros.asset.get("r1.png", Texture.class );
 		r2 = LosNumeros.asset.get("r2.png", Texture.class );
 		r3 = LosNumeros.asset.get("r3.png", Texture.class );
+		crono = LosNumeros.asset.get("crono.png", Texture.class );
+		iproc = new InputProcesadorIngame(cam,game.gamew);
 	}
 	@Override
 	public void render(float delta) {
@@ -44,6 +50,7 @@ public class IngameScreen implements Screen {
 		batch.draw(fondo, 344, 22);
 		batch.draw(red, 0, 0);
 		render_fichas(delta);
+		batch.draw(crono,40,40);
 		batch.end();
 	}
 
@@ -52,13 +59,35 @@ public class IngameScreen implements Screen {
 		Ficha ficha;
 		for (int j=0;j<9;j++){
 			for (int i=0;i<11;i++){
-				render_ficha(game.gamew.fichas[i][j], delta); 
+				if (! (i == 10 && j%2 != 0)){
+					render_ficha(game.gamew.fichas[i][j], delta);
+				}
 			}
 		}
 	}
 	
 	public void render_ficha(Ficha ficha, float delta){
-		batch.draw(ficha.getTexture, ficha.x ,ficha.y);
+		Texture tmp = a1;
+		if( ficha.color == FichaColor.AMARILLO){
+			switch (ficha.val){
+				case 1: tmp = a1;break;
+				case 2: tmp = a2;break;
+				case 3: tmp = a3;break;
+			}
+			
+		}else{
+			switch (ficha.val){
+			case 1: tmp = r1;break;
+			case 2: tmp = r2;break;
+			case 3: tmp = r3;break;
+		}
+		}
+				
+		if (ficha.y % 2 == 0){
+			batch.draw(tmp, 342 + 83*ficha.x ,25 +72*ficha.y);
+		}else{
+			batch.draw(tmp, 382 + 83*ficha.x ,25 + 72*ficha.y);
+		}
 	}
 	
 	@Override
@@ -69,7 +98,7 @@ public class IngameScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
+		Gdx.input.setInputProcessor(iproc);	
 
 	}
 

@@ -9,6 +9,7 @@ public class GameWorld {
 	public GameWorld(LosNumeros game){
 		this.game = game;
 		fichas = new Ficha[11][9];
+		generarPanel();
 	}
 	
 	public void update(float delta){
