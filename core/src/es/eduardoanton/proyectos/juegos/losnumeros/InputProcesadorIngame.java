@@ -14,6 +14,7 @@ public class InputProcesadorIngame implements InputProcessor {
 
 	private OrthographicCamera cam;
 	private GameWorld gamew;
+	private static int lasty,lastx;
 	
 	InputProcesadorIngame(OrthographicCamera cam, GameWorld gamew){
 		this.cam = cam;
@@ -40,7 +41,23 @@ public class InputProcesadorIngame implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
+		Vector3 touchpos = new Vector3(screenX,screenY,0);
+		cam.unproject(touchpos);
+		int x;
+		if (touchpos.x > 342 ){
+			int y = (int)(touchpos.y - 25)/72;
+			if ( y % 2 == 0){
+				 x = (int)(touchpos.x - 342)/83;
+			}else{
+				x = (int)(touchpos.x - 382)/83;
+			}
+			if (( y >=0 && y <= 8 && x >=0 && x <= 10  )){
+				gamew.fichas[x][y].marcada = true;
+				gamew.linea.push(gamew.fichas[x][y]);
+				lastx = x;
+				lasty = y;
+			}
+		}
 		return false;
 	}
 
@@ -53,12 +70,33 @@ public class InputProcesadorIngame implements InputProcessor {
 			gamew.generarPanel();
 			return true;
 		}
+		gamew.resetTrail();
 		return false;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
+		Vector3 touchpos = new Vector3(screenX,screenY,0);
+		cam.unproject(touchpos);
+		int x;
+		if (touchpos.x > 342){
+			int y = (int)(touchpos.y -25)/72;
+			if ( y % 2 == 0){
+				x = (int)(touchpos.x - 342)/83;
+			}else{
+				x = (int)(touchpos.x - 382)/83;
+			}
+			if ((x != lastx || y != lasty) && ( y >=0 && y <= 8 && x >=0 && x <= 10 )){
+				if (gamew.linea.contains(gamew.fichas[x][y])){
+					gamew.linea.pop().marcada = false;
+				}else{
+					gamew.fichas[x][y].marcada = true; 
+					gamew.linea.push(gamew.fichas[x][y]);
+					lastx = x;
+					lasty = y;
+				}
+			}
+		}
 		return false;
 	}
 

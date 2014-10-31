@@ -18,7 +18,7 @@ public class IngameScreen implements Screen {
 	private LosNumeros game;
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
-	private Texture fondo,red,marco,a1,a2,a3,r1,r2,r3,crono;
+	private Texture fondo,red,marco,a1,a2,a3,r1,r2,r3,select,crono;
 	private InputProcessor iproc;
 	
 	public IngameScreen(LosNumeros game){
@@ -37,6 +37,7 @@ public class IngameScreen implements Screen {
 		r1 = LosNumeros.asset.get("r1.png", Texture.class );
 		r2 = LosNumeros.asset.get("r2.png", Texture.class );
 		r3 = LosNumeros.asset.get("r3.png", Texture.class );
+		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );
 		iproc = new InputProcesadorIngame(cam,game.gamew);
 	}
@@ -85,8 +86,14 @@ public class IngameScreen implements Screen {
 				
 		if (ficha.y % 2 == 0){
 			batch.draw(tmp, 342 + 83*ficha.x ,25 +72*ficha.y);
+			if ( ficha.marcada){
+				batch.draw(select, 342 + 83*ficha.x ,25 +72*ficha.y);
+			}
 		}else{
 			batch.draw(tmp, 382 + 83*ficha.x ,25 + 72*ficha.y);
+			if (ficha.marcada){
+				batch.draw(select, 382 + 83*ficha.x ,25 + 72*ficha.y);
+			}
 		}
 	}
 	

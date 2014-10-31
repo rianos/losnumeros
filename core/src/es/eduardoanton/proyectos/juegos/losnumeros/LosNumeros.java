@@ -45,6 +45,7 @@ public class LosNumeros extends Game {
 		asset.load("a2.png",Texture.class);
 		asset.load("a3.png",Texture.class);
 		asset.load("crono.png",Texture.class);
+		asset.load("select.png", Texture.class);
 	}
 	
 	public void mainscreen(){
