@@ -51,12 +51,7 @@ public class InputProcesadorIngame implements InputProcessor {
 			}else{
 				x = (int)(touchpos.x - 382)/83;
 			}
-			if (( y >=0 && y <= 8 && x >=0 && x <= 10  )){
-				gamew.fichas[x][y].marcada = true;
-				gamew.linea.push(gamew.fichas[x][y]);
-				lastx = x;
-				lasty = y;
-			}
+			gamew.selectCell(x, y);
 		}
 		return false;
 	}
@@ -70,7 +65,7 @@ public class InputProcesadorIngame implements InputProcessor {
 			gamew.generarPanel();
 			return true;
 		}
-		gamew.resetTrail();
+		gamew.checkTrail();
 		return false;
 	}
 
@@ -86,16 +81,7 @@ public class InputProcesadorIngame implements InputProcessor {
 			}else{
 				x = (int)(touchpos.x - 382)/83;
 			}
-			if ((x != lastx || y != lasty) && ( y >=0 && y <= 8 && x >=0 && x <= 10 )){
-				if (gamew.linea.contains(gamew.fichas[x][y])){
-					gamew.linea.pop().marcada = false;
-				}else{
-					gamew.fichas[x][y].marcada = true; 
-					gamew.linea.push(gamew.fichas[x][y]);
-					lastx = x;
-					lasty = y;
-				}
-			}
+			gamew.selectCell(x, y);
 		}
 		return false;
 	}

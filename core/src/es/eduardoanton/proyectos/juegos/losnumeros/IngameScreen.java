@@ -2,9 +2,11 @@ package es.eduardoanton.proyectos.juegos.losnumeros;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.InputProcessor;
@@ -20,9 +22,12 @@ public class IngameScreen implements Screen {
 	private OrthographicCamera cam;
 	private Texture fondo,red,marco,a1,a2,a3,r1,r2,r3,select,crono;
 	private InputProcessor iproc;
+	private BitmapFont font;
 	
 	public IngameScreen(LosNumeros game){
 		this.game = game;
+		font = new BitmapFont();
+		 font.setColor(Color.WHITE);
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, LosNumeros.screenwidth,LosNumeros.screenheight);
 		cam.update();	
@@ -47,6 +52,8 @@ public class IngameScreen implements Screen {
 		Gdx.gl.glClearColor(0.0f,0.0f ,0.0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);	
 		batch.begin();
+		font.draw(batch, "Amarillas:" + LosNumeros.gamew.amarillos + " Rojas: " + LosNumeros.gamew.rojos , 20 , 600);
+		font.draw(batch, "PUNTOS:" + LosNumeros.gamew.puntos, 20, 700);
 		batch.draw(marco, 295, -25);
 		batch.draw(fondo, 344, 22);
 		batch.draw(red, 0, 0);
