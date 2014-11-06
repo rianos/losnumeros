@@ -47,7 +47,7 @@ public class GameWorld {
 	public void generarPanel(){
 		for (int j=0;j<9;j++){
 			for (int i=0;i<11;i++){
-				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 3),MathUtils.random(0,1));
+				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,1));
 			}
 		}
 		lastx = -1;
@@ -101,7 +101,7 @@ public class GameWorld {
 			puntos += (linea.size() -3)*2;
 		}
 		for (Ficha ficha : linea){
-			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 3),MathUtils.random(0,1));	
+			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 5),MathUtils.random(0,1));	
 		}
 		linea.clear();
 	}

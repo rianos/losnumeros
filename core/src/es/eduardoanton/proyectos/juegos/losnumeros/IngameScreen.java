@@ -20,7 +20,7 @@ public class IngameScreen implements Screen {
 	private LosNumeros game;
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
-	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,select,crono,l3,l5,l7,l9,l11,l2;
+	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,select,crono,l3,l5,l7;
 	private InputProcessor iproc;
 	private BitmapFont font;
 	
@@ -50,9 +50,7 @@ public class IngameScreen implements Screen {
 		l3 =LosNumeros.asset.get("l3.png", Texture.class );
 		l5 =LosNumeros.asset.get("l5.png", Texture.class );
 		l7 =LosNumeros.asset.get("l7.png", Texture.class );
-		l9 =LosNumeros.asset.get("l9.png", Texture.class );
-		l11 =LosNumeros.asset.get("l11.png", Texture.class );
-		l2 =LosNumeros.asset.get("l2.png", Texture.class );
+		
 		
 		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );
@@ -71,7 +69,7 @@ public class IngameScreen implements Screen {
 		batch.draw(fondo, 344, 22);
 		
 		render_fichas(delta);
-		//render_trail(delta);
+		render_trail(delta);
 		batch.draw(crono,40,40);
 		batch.draw(red, 2, -1);
 		batch.end();
@@ -89,6 +87,26 @@ public class IngameScreen implements Screen {
 		}
 	}
 	
+	private int tx(Ficha f){
+		int tx = 0;
+		if (f.y % 2 == 0){
+			tx =  343 + 83*f.x;	
+		}else{
+			tx =  384 + 83*f.x;
+		}
+		return tx;
+	}
+	
+	private int ty(Ficha f){
+		int ty = 0;
+		if (f.y % 2 == 0){
+			ty =  23 +72*f.y;	
+		}else{
+			ty =  23 + 72*f.y;
+		}
+		return ty;
+	}
+	
 	public void render_trail(float delta){
 		int ux = -1;
 		int uy = -1;
@@ -97,24 +115,44 @@ public class IngameScreen implements Screen {
 				ux = ficha.x;
 				uy = ficha.y;
 			}else{
-				if ( ficha.x == ux && ficha.y == uy -1 && uy % 2 == 0){
-					batch.draw(l5,100,200);
+				if ( ficha.y == uy && ficha.x == ux + 1){
+					batch.draw(l3,tx(ficha) - 60 ,ty(ficha) + 28);
 					ux = ficha.x;
 					uy = ficha.y;
-				}else if ( ficha.x == ux && ficha.y == uy -1 && uy % 2 != 0){
-					batch.draw(l7,100,200);
+				}else if (  ficha.y == uy && ficha.x == ux - 1){
+					batch.draw(l3,tx(ficha) - 60 +83  ,ty(ficha) + 28);
 					ux = ficha.x;
 					uy = ficha.y;
-				}else if ( ficha.x == ux && ficha.y == uy + 1 && uy %2 == 0){
-					batch.draw(l3,100,200);
+				}else if ( ficha.x == ux && ficha.y == uy - 1 && uy % 2 == 0){
+					batch.draw(l5,tx(ficha) - 17 ,ty(ficha) + 28);
 					ux = ficha.x;
 					uy = ficha.y;
-				}else if ( ficha.x == ux && ficha.y == uy + 1 && uy %2 != 0){
-					batch.draw(l11,100,200);
+				}else if ( ficha.x == ux +1 && ficha.y == uy - 1){
+					batch.draw(l5,tx(ficha) - 17 ,ty(ficha) + 28);
 					ux = ficha.x;
 					uy = ficha.y;
-				}else if ( ficha.y == uy && ficha.x == ux + 1 && uy %2 != 0){
-					batch.draw(l11,100,200);
+				}else if ( ficha.x == ux && ficha.y == uy + 1 && uy % 2 != 0 ){
+					batch.draw(l5,tx(ficha) + 24 ,ty(ficha) - 44);
+					ux = ficha.x;
+					uy = ficha.y;
+				}else if ( ficha.x == ux -1 && ficha.y == uy + 1 ){
+					batch.draw(l5,tx(ficha) + 24 ,ty(ficha) - 44);
+					ux = ficha.x;
+					uy = ficha.y;
+				}else if ( ficha.x == ux && ficha.y == uy - 1 ){
+					batch.draw(l7,tx(ficha) + 24 ,ty(ficha) + 28);
+					ux = ficha.x;
+					uy = ficha.y;
+				}else if ( ficha.x == ux - 1 && ficha.y == uy - 1 ){
+					batch.draw(l7,tx(ficha) + 24 ,ty(ficha) + 28);
+					ux = ficha.x;
+					uy = ficha.y;
+				}else if ( ficha.x == ux  && ficha.y == uy + 1 ){
+					batch.draw(l7,tx(ficha) - 17 ,ty(ficha) - 44);
+					ux = ficha.x;
+					uy = ficha.y;
+				}else if ( ficha.x == ux + 1 && ficha.y == uy + 1 ){
+					batch.draw(l7,tx(ficha) - 17 ,ty(ficha) - 44);
 					ux = ficha.x;
 					uy = ficha.y;
 				}
