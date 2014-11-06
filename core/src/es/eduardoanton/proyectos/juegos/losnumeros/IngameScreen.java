@@ -2,6 +2,7 @@ package es.eduardoanton.proyectos.juegos.losnumeros;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -23,6 +24,7 @@ public class IngameScreen implements Screen {
 	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,select,crono,l3,l5,l7;
 	private InputProcessor iproc;
 	private BitmapFont font;
+
 	
 	public IngameScreen(LosNumeros game){
 		this.game = game;
@@ -50,7 +52,6 @@ public class IngameScreen implements Screen {
 		l3 =LosNumeros.asset.get("l3.png", Texture.class );
 		l5 =LosNumeros.asset.get("l5.png", Texture.class );
 		l7 =LosNumeros.asset.get("l7.png", Texture.class );
-		
 		
 		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );

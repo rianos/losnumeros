@@ -3,6 +3,7 @@ package es.eduardoanton.proyectos.juegos.losnumeros;
 import java.util.Stack;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.MathUtils;
 
 import es.eduardoanton.proyectos.juegos.losnumeros.Ficha.FichaColor;
@@ -15,7 +16,8 @@ public class GameWorld {
 	public int lastx,lasty;
 	public int grises, rojos,puntos;
 	public float gametime;
-	
+	public Sound correctoS,failS,recargaS,timeS;
+	private boolean timeexpired = false;
 	public static float GAMETIME = 120;
 
 	public GameWorld(LosNumeros game){
@@ -24,6 +26,10 @@ public class GameWorld {
 		gametime =  GAMETIME;
 		fichas = new Ficha[11][9];
 		linea = new Stack<Ficha>();
+		correctoS= LosNumeros.asset.get("app_game_interactive_alert_tone_007.mp3", Sound.class);
+		failS = LosNumeros.asset.get("multimedia_event_tone_2.mp3", Sound.class);
+		recargaS =  LosNumeros.asset.get("button_switch_gear_multimedia_web_interactive.mp3", Sound.class);
+		timeS = LosNumeros.asset.get("clock_digital_alarm_beeping_003.mp3", Sound.class);
 		generarPanel();
 	}
 	
@@ -42,9 +48,14 @@ public class GameWorld {
 	public void update(float delta){
 		calculate();
 		gametime-=delta;
+		if ( gametime < 0f && !timeexpired){
+			timeexpired = true;
+			timeS.play();
+		}
 	}
 	
 	public void generarPanel(){
+		recargaS.play();
 		for (int j=0;j<9;j++){
 			for (int i=0;i<11;i++){
 				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,1));
@@ -79,6 +90,7 @@ public class GameWorld {
 	}
 	
 	private void failTrail(){
+		failS.play();
 		linea.clear();
 		lastx = -1;
 		lasty = -1;
@@ -92,6 +104,7 @@ public class GameWorld {
 	}
 	
 	private void successTrail(){
+		correctoS.play();
 		lastx = -1;
 		lasty = -1;
 		puntos += linea.size();

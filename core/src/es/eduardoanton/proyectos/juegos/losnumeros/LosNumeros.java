@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -53,6 +54,10 @@ public class LosNumeros extends Game {
 		asset.load("l3.png", Texture.class);
 		asset.load("l5.png", Texture.class);
 		asset.load("l7.png", Texture.class);
+		asset.load("app_game_interactive_alert_tone_007.mp3", Sound.class);
+		asset.load("button_switch_gear_multimedia_web_interactive.mp3", Sound.class);
+		asset.load("multimedia_event_tone_2.mp3", Sound.class);
+		asset.load("clock_digital_alarm_beeping_003.mp3", Sound.class);
 	}
 	
 	public void mainscreen(){
