@@ -4,7 +4,7 @@ public class Ficha {
 	public int x;
 	public int y;
 	public int val;
-	public enum FichaColor  { ROJO, AMARILLO};
+	public enum FichaColor  { ROJO, GRIS};
 	public FichaColor color;
 	public boolean marcada;
 	
@@ -14,21 +14,21 @@ public class Ficha {
 		if (color == 0){
 			this.color = FichaColor.ROJO;
 		}else{
-			this.color = FichaColor.AMARILLO;
+			this.color = FichaColor.GRIS;
 		}
 		this.marcada = false;
 		this.val = val;
 	}
-	
+	/*
 	public String getTexture(){
 		String res = "";
 		switch(this.color){
-			case ROJO: res = "r";
+			case ROJO: res = "rr";
 						break;
-			case AMARILLO: res = "a";
+			case GRIS: res = "gr";
 		   		     break;
 		}
 		res = res + val + ".png";
 		return res;
-	}
+	}*/
 }

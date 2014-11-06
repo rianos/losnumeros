@@ -38,14 +38,24 @@ public class LosNumeros extends Game {
 		asset.load("fondo.png", Texture.class);
 		asset.load("marco.png", Texture.class);
 		asset.load("red.png",Texture.class);
-		asset.load("r1.png",Texture.class);
-		asset.load("r2.png",Texture.class);
-		asset.load("r3.png",Texture.class);
-		asset.load("a1.png",Texture.class);
-		asset.load("a2.png",Texture.class);
-		asset.load("a3.png",Texture.class);
+		asset.load("rr1.png",Texture.class);
+		asset.load("rr2.png",Texture.class);
+		asset.load("rr3.png",Texture.class);
+		asset.load("rr4.png",Texture.class);
+		asset.load("rr5.png",Texture.class);
+		asset.load("gr1.png",Texture.class);
+		asset.load("gr2.png",Texture.class);
+		asset.load("gr3.png",Texture.class);
+		asset.load("gr4.png",Texture.class);
+		asset.load("gr5.png",Texture.class);
 		asset.load("crono.png",Texture.class);
 		asset.load("select.png", Texture.class);
+		asset.load("l3.png", Texture.class);
+		asset.load("l5.png", Texture.class);
+		asset.load("l7.png", Texture.class);
+		asset.load("l9.png", Texture.class);
+		asset.load("l11.png", Texture.class);
+		asset.load("l2.png", Texture.class);
 	}
 	
 	public void mainscreen(){

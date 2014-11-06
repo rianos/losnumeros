@@ -13,27 +13,35 @@ public class GameWorld {
 	public Ficha[][] fichas;
 	public Stack<Ficha> linea;
 	public int lastx,lasty;
-	public int amarillos, rojos,puntos;
+	public int grises, rojos,puntos;
+	public float gametime;
+	
+	public static float GAMETIME = 120;
 
 	public GameWorld(LosNumeros game){
 		this.game = game;
 		puntos = 0;
+		gametime =  GAMETIME;
 		fichas = new Ficha[11][9];
 		linea = new Stack<Ficha>();
 		generarPanel();
 	}
 	
-	public void update(float delta){
+	private void calculate(){
 		rojos = 0;
-		amarillos = 0;
+		grises = 0;
 		for ( Ficha fichita : linea){
-			if (fichita.color == FichaColor.AMARILLO){
-				amarillos+=fichita.val;
+			if (fichita.color == FichaColor.GRIS){
+				grises+=fichita.val;
 			}else{
 				rojos+=fichita.val;
 			}
 		}
-		//Gdx.app.log("LOS", "AMARILLAS " + amarillos + " ROJOS: " + rojos);
+	}
+	
+	public void update(float delta){
+		calculate();
+		gametime-=delta;
 	}
 	
 	public void generarPanel(){
@@ -44,6 +52,7 @@ public class GameWorld {
 		}
 		lastx = -1;
 		lasty = -1;
+		gametime-=5f;
 	}
 	
 	public void selectCell(int x, int y){
@@ -78,11 +87,19 @@ public class GameWorld {
 				fichas[i][j].marcada = false;
 			}
 		}
+		// Penalizo 10 segundos un fallo
+		gametime-=10f;
 	}
 	
 	private void successTrail(){
 		lastx = -1;
 		lasty = -1;
+		puntos += linea.size();
+		// Si la linea es de 3 damos un segundo, y 2 segundos por cada celda mayor que 2
+		if ( linea.size() >= 3){
+			gametime = Math.min(GAMETIME, gametime + (1 + ((linea.size() - 3)*2)));
+			puntos += (linea.size() -3)*2;
+		}
 		for (Ficha ficha : linea){
 			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 3),MathUtils.random(0,1));	
 		}
@@ -90,9 +107,8 @@ public class GameWorld {
 	}
 	
 	public void checkTrail(){
-		update(0f);
-		if (amarillos == rojos){
-			puntos += amarillos;
+		calculate();
+		if (grises == rojos){
 			successTrail();
 		}else{
 			failTrail();
