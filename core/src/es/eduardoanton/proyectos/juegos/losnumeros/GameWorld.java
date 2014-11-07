@@ -2,6 +2,8 @@ package es.eduardoanton.proyectos.juegos.losnumeros;
 
 import java.util.Stack;
 
+import javafx.scene.shape.Line;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.MathUtils;
@@ -13,7 +15,7 @@ public class GameWorld {
 	private LosNumeros game;
 	public Ficha[][] fichas;
 	public Stack<Ficha> linea;
-	public int lastx,lasty;
+	public int lastx,lasty,lastsx,lastsy;
 	public int grises, rojos,puntos;
 	public float gametime;
 	public Sound correctoS,failS,recargaS,timeS;
@@ -78,12 +80,38 @@ public class GameWorld {
 			||  (lasty != y  && lastx == x && (y == lasty + 1 || y == lasty - 1 || lasty == -1))
 				){ 
 				if (linea.contains(fichas[x][y])){
-					linea.pop().marcada = false;
-				}else{
-					fichas[x][y].marcada = true; 
-					linea.push(fichas[x][y]);
+					if (linea.elementAt(linea.size() - 2) == fichas[x][y]){
+						linea.pop().marcada = false;
+						lastsx = linea.lastElement().x;
+						lastsy = linea.lastElement().y;
+					}
 					lastx = x;
 					lasty = y;
+				}else{
+					if (linea.size() < 1){
+						fichas[x][y].marcada = true; 
+						linea.push(fichas[x][y]);
+						lastx = x;
+						lasty = y;
+						lastsx = x;
+						lastsy = y;
+					}else {
+						if (
+								(lastsx !=x && lastsy !=y && ((x == lastsx + 1 || x == lastsx - 1 || lastsx == -1) && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1)))
+							||	(lastsx != x && lastsy == y && (x == lastsx + 1 || x == lastsx - 1 || lastsx == -1))
+							||  (lastsy != y  && lastsx == x && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1))
+								){ 
+								fichas[x][y].marcada = true; 
+								linea.push(fichas[x][y]);
+								lastx = x;
+								lasty = y;
+								lastsx = x;
+								lastsy = y;		
+						}else{
+							lastx = x;
+							lasty = y;
+						}
+					}
 				}
 			}
 		}	
@@ -94,6 +122,8 @@ public class GameWorld {
 		linea.clear();
 		lastx = -1;
 		lasty = -1;
+		lastsx = -1;
+		lastsy = -1;
 		for (int j=0;j<9;j++){
 			for (int i=0;i<11;i++){
 				fichas[i][j].marcada = false;
@@ -107,6 +137,8 @@ public class GameWorld {
 		correctoS.play();
 		lastx = -1;
 		lasty = -1;
+		lastsx = -1;
+		lastsy = -1;
 		puntos += linea.size();
 		// Si la linea es de 3 damos un segundo, y 2 segundos por cada celda mayor que 2
 		if ( linea.size() >= 3){

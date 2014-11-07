@@ -409,9 +409,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="105.77328"
-     inkscape:cy="252.02909"
+     inkscape:zoom="1"
+     inkscape:cx="12.717553"
+     inkscape:cy="214.91451"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -853,7 +853,7 @@
          sodipodi:role="line">2</tspan></text>
     <path
        inkscape:connector-curvature="0"
-       style="fill:#898989;fill-opacity:0.75263163;stroke:#000000;stroke-opacity:1;display:inline"
+       style="fill:#898989;fill-opacity:0.39215687;stroke:none;stroke-opacity:1;display:inline"
        d="m 205.90376,733.34668 c -11.13071,-0.0171 -20.16919,8.39279 -20.1852,18.78145 -0.016,10.38865 8.99656,18.82637 20.12725,18.84351 8.03422,0.0124 14.98806,-4.37885 18.23529,-10.72194 l 44.21869,0.0681 c 3.22767,6.35306 10.13672,10.76563 18.17092,10.778 11.13072,0.0171 20.16922,-8.39279 20.18522,-18.78142 0.016,-10.38867 -8.99657,-18.82638 -20.12726,-18.84353 -8.59008,-0.0132 -15.91935,5.00432 -18.83111,12.06477 l -42.99995,-0.0662 c -2.89195,-7.06571 -10.20657,-12.10948 -18.79385,-12.12271 z"
        id="path15229"
        inkscape:transform-center-y="2.3172908"
@@ -902,7 +902,7 @@
        inkscape:transform-center-y="34.790429" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:#898989;fill-opacity:0.75263163;stroke:#000000;stroke-opacity:1;display:inline"
+       style="fill:#898989;fill-opacity:0.39215687;stroke:none;stroke-opacity:1;display:inline"
        d="m 81.663327,683.33318 c -5.37206,-9.74854 -17.10581,-13.58774 -26.20447,-8.57387 -9.09865,5.01387 -12.12046,16.98426 -6.74845,26.7328 3.87754,7.0366 11.08573,10.9965 18.20804,10.76817 l 21.34126,38.72785 c -3.99731,5.89921 -4.51484,14.08077 -0.6373,21.11733 5.37206,9.74855 17.105823,13.58776 26.204453,8.5739 9.09866,-5.01389 12.12045,-16.98428 6.74846,-26.73281 -4.14586,-7.52341 -12.08379,-11.50874 -19.67148,-10.63966 L 80.150747,705.64645 c 4.78343,-5.95034 5.65702,-14.79229 1.51255,-22.31325 z"
        id="path15229-6-3"
        inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/l5.png"
@@ -912,7 +912,7 @@
        inkscape:transform-center-y="34.790429" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:#898989;fill-opacity:0.75263163;stroke:#000000;stroke-opacity:1;display:inline"
+       style="fill:#898989;fill-opacity:0.39215687;stroke:none;stroke-opacity:1;display:inline"
        d="m 83.486643,847.97603 c 5.37206,-9.74854 17.105807,-13.58774 26.204467,-8.57387 9.09865,5.01387 12.12046,16.98426 6.74845,26.7328 -3.87754,7.0366 -11.08573,10.9965 -18.208037,10.76817 l -21.34126,38.72785 c 3.99731,5.89921 4.51484,14.08077 0.6373,21.11733 -5.37206,9.74855 -17.10582,13.58776 -26.20445,8.5739 -9.09866,-5.01389 -12.12045,-16.98428 -6.74846,-26.73281 4.14586,-7.52341 12.08379,-11.50874 19.67148,-10.63966 l 20.75309,-37.66044 c -4.78343,-5.95034 -5.65702,-14.79229 -1.51255,-22.31325 z"
        id="path15229-6-3-8"
        inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/l7.png"
