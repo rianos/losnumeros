@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.InputProcessor;
 
@@ -25,6 +27,7 @@ public class IngameScreen implements Screen {
 	private Texture p2,p3,p5,p7,p9,p11,botonp;
 	private InputProcessor iproc;
 	private BitmapFont font;
+	private ShapeRenderer shapeRenderer;
 
 	
 	public IngameScreen(LosNumeros game){
@@ -64,25 +67,45 @@ public class IngameScreen implements Screen {
 		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );
 		iproc = new InputProcesadorIngame(cam,game.gamew);
+		shapeRenderer = new ShapeRenderer();
 	}
 	@Override
 	public void render(float delta) {
 		game.gamew.update(delta);
 		Gdx.gl.glClearColor(0.0f,0.0f ,0.0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);	
+		cam.update();
+		shapeRenderer.setProjectionMatrix(cam.combined);
+		shapeRenderer.begin(ShapeType.Filled);
+        shapeRenderer.setColor(Color.TEAL);
+        shapeRenderer.rect(10, 650, LosNumeros.gamew.gametime*300/GameWorld.GAMETIME, 40);
+        shapeRenderer.end();
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.setColor(Color.TEAL);
+        shapeRenderer.rect(10, 650, 300, 40);
+        shapeRenderer.end();
+    
 		batch.begin();
 		font.draw(batch, "Grises:" + LosNumeros.gamew.grises + " Rojas: " + LosNumeros.gamew.rojos , 20 , 600);
-		font.draw(batch, "PUNTOS:" + LosNumeros.gamew.puntos, 20, 700);
-		font.draw(batch, "TIEMPO:" + String.format("%.0f", LosNumeros.gamew.gametime), 20, 400);
+		font.draw(batch, "PUNTOS:" + LosNumeros.gamew.puntos, 20, 300);
+		font.draw(batch, String.format("%.0f", LosNumeros.gamew.gametime), 15, 682);
 		batch.draw(marco, 295, -25);
 		batch.draw(fondo, 344, 22);
 		
 		render_fichas(delta);
 		render_trail(delta);
-		batch.draw(crono,40,40);
+		//batch.draw(crono,40,40);
 		batch.draw(red, 2, -1);
 		batch.draw(botonp,10,450);
 		batch.end();
+		shapeRenderer.begin(ShapeType.Filled);
+        shapeRenderer.setColor(Color.RED);
+        shapeRenderer.circle(120, 120, 90);
+        shapeRenderer.end();
+		shapeRenderer.begin(ShapeType.Filled);
+        shapeRenderer.setColor(Color.BLACK);
+        shapeRenderer.arc(120, 120, 88, 0f, (360f - 360f*LosNumeros.gamew.gametimereload/GameWorld.GAMETIMERELOAD));
+        shapeRenderer.end();
 	}
 
 	
