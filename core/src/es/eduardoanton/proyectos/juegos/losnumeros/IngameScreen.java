@@ -67,7 +67,7 @@ public class IngameScreen implements Screen {
 		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );
 		iproc = new InputProcesadorIngame(cam,game.gamew);
-		shapeRenderer = new ShapeRenderer();
+		//shapeRenderer = new ShapeRenderer();
 	}
 	@Override
 	public void render(float delta) {
@@ -75,7 +75,7 @@ public class IngameScreen implements Screen {
 		Gdx.gl.glClearColor(0.0f,0.0f ,0.0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);	
 		cam.update();
-		shapeRenderer.setProjectionMatrix(cam.combined);
+		/*shapeRenderer.setProjectionMatrix(cam.combined);
 		shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.TEAL);
         shapeRenderer.rect(10, 650, LosNumeros.gamew.gametime*300/GameWorld.GAMETIME, 40);
@@ -83,7 +83,7 @@ public class IngameScreen implements Screen {
         shapeRenderer.begin(ShapeType.Line);
         shapeRenderer.setColor(Color.TEAL);
         shapeRenderer.rect(10, 650, 300, 40);
-        shapeRenderer.end();
+        shapeRenderer.end();*/
     
 		batch.begin();
 		font.draw(batch, "Grises:" + LosNumeros.gamew.grises + " Rojas: " + LosNumeros.gamew.rojos , 20 , 600);
@@ -94,18 +94,18 @@ public class IngameScreen implements Screen {
 		
 		render_fichas(delta);
 		render_trail(delta);
-		//batch.draw(crono,40,40);
+		batch.draw(crono,40,40);
 		batch.draw(red, 2, -1);
 		batch.draw(botonp,10,450);
 		batch.end();
-		shapeRenderer.begin(ShapeType.Filled);
+		/*shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
         shapeRenderer.circle(120, 120, 90);
         shapeRenderer.end();
 		shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.BLACK);
         shapeRenderer.arc(120, 120, 88, 0f, (360f - 360f*LosNumeros.gamew.gametimereload/GameWorld.GAMETIMERELOAD));
-        shapeRenderer.end();
+        shapeRenderer.end();*/
 	}
 
 	

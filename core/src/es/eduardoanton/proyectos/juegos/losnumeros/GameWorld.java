@@ -21,13 +21,11 @@ public class GameWorld {
 	public Sound correctoS,failS,recargaS,timeS;
 	private boolean timeexpired = false;
 	public static float GAMETIME = 180;
-	public static float GAMETIMERELOAD = 30;
-
+	
 	public GameWorld(LosNumeros game){
 		this.game = game;
 		puntos = 0;
 		gametime =  GAMETIME;
-		gametimereload = GAMETIMERELOAD;
 		fichas = new Ficha[11][9];
 		linea = new Stack<Ficha>();
 		correctoS= LosNumeros.asset.get("app_game_interactive_alert_tone_007.mp3", Sound.class);
@@ -57,9 +55,6 @@ public class GameWorld {
 			timeexpired = true;
 			timeS.play();
 		}
-		if (gametimereload <= 0){
-			generarPanel();
-		}
 	}
 	
 	public void generarPanel(){
@@ -72,7 +67,6 @@ public class GameWorld {
 		lastx = -1;
 		lasty = -1;
 		gametime-=5f;
-		gametimereload = GAMETIMERELOAD;
 	}
 	
 	public void generarPared(){
