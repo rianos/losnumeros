@@ -593,6 +593,166 @@
          k3="0.6"
          id="feComposite9795-9-5-5-7-2" />
     </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter9787-1-8-6-0-9">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur9789-7-8-7-7" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting9791-4-2-1-5">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight9793-0-4-7-0" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite9795-9-5-5-7-7" />
+    </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter3956">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur3958" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting3960">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight3962" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite3964" />
+    </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter3966">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur3968" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting3970">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight3972" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite3974" />
+    </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter3976">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur3978" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting3980">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight3982" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite3984" />
+    </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter3986">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur3988" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting3990">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight3992" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite3994" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -602,8 +762,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="128.83662"
-     inkscape:cy="378.48859"
+     inkscape:cx="12.33662"
+     inkscape:cy="538.48859"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1312,5 +1472,170 @@
        inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/botonp.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(0,0.66721954,-0.66721954,0,226.62447,-49.9485)"
+       d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="-0.52359878"
+       sodipodi:arg1="-1.0471976"
+       sodipodi:r2="60.295517"
+       sodipodi:r1="69.623268"
+       sodipodi:cy="413.06445"
+       sodipodi:cx="459.0853"
+       sodipodi:sides="6"
+       id="path16847-4-6"
+       style="fill:#ebcc86;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-6-0-9)"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa5.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81" />
+    <path
+       transform="matrix(0,0.66721954,-0.66721954,0,110.61457,-49.9485)"
+       d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="-0.52359878"
+       sodipodi:arg1="-1.0471976"
+       sodipodi:r2="60.295517"
+       sodipodi:r1="69.623268"
+       sodipodi:cy="413.06445"
+       sodipodi:cx="459.0853"
+       sodipodi:sides="6"
+       id="path16845-3-7"
+       style="fill:#ebcc86;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-6-0-9)"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa4.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81" />
+    <path
+       transform="matrix(0,0.66721954,-0.66721954,0,-5.395326,-49.9485)"
+       d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="-0.52359878"
+       sodipodi:arg1="-1.0471976"
+       sodipodi:r2="60.295517"
+       sodipodi:r1="69.623268"
+       sodipodi:cy="413.06445"
+       sodipodi:cx="459.0853"
+       sodipodi:sides="6"
+       id="path16843-5-9"
+       style="fill:#ebcc86;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-6-0-9)"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa3.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ebcc86;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-6-0-9)"
+       id="path16841-2-0"
+       sodipodi:sides="6"
+       sodipodi:cx="459.0853"
+       sodipodi:cy="413.06445"
+       sodipodi:r1="69.623268"
+       sodipodi:r2="60.295517"
+       sodipodi:arg1="-1.0471976"
+       sodipodi:arg2="-0.52359878"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+       transform="matrix(0,0.66721954,-0.66721954,0,-121.40523,-49.9485)"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa2.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81" />
+    <path
+       transform="matrix(0,0.66721954,-0.66721954,0,-237.41513,-49.9485)"
+       d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="true"
+       sodipodi:arg2="-0.52359878"
+       sodipodi:arg1="-1.0471976"
+       sodipodi:r2="60.295517"
+       sodipodi:r1="69.623268"
+       sodipodi:cy="413.06445"
+       sodipodi:cx="459.0853"
+       sodipodi:sides="6"
+       id="path16839-1-8"
+       style="fill:#ebcc86;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-6-0-9)"
+       sodipodi:type="star"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa1.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81" />
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+       x="-533.94165"
+       y="279.69031"
+       id="text8568-60-2-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa1.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81"><tspan
+         sodipodi:role="line"
+         id="tspan8570-7-2-7"
+         x="-533.94165"
+         y="279.69031">1</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text8572-8-1-3"
+       y="280.11218"
+       x="-416.50992"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+       xml:space="preserve"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa2.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81"><tspan
+         y="280.11218"
+         x="-416.50992"
+         id="tspan8574-0-7-3"
+         sodipodi:role="line">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+       x="-301.23438"
+       y="279.65906"
+       id="text8576-1-4-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa3.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81"><tspan
+         sodipodi:role="line"
+         id="tspan8578-8-7-6"
+         x="-301.23438"
+         y="279.65906">3</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text8592-1-8-9"
+       y="279.69031"
+       x="-185.1151"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+       xml:space="preserve"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa4.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81"><tspan
+         y="279.69031"
+         x="-185.1151"
+         id="tspan8594-0-6-4"
+         sodipodi:role="line">4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+       x="-69.011452"
+       y="279.23718"
+       id="text8596-2-0-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa5.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81"><tspan
+         sodipodi:role="line"
+         id="tspan8598-5-0-5"
+         x="-69.011452"
+         y="279.23718">5</tspan></text>
   </g>
 </svg>

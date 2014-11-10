@@ -49,6 +49,11 @@ public class LosNumeros extends Game {
 		asset.load("gr3.png",Texture.class);
 		asset.load("gr4.png",Texture.class);
 		asset.load("gr5.png",Texture.class);
+		asset.load("aa1.png",Texture.class);
+		asset.load("aa2.png",Texture.class);
+		asset.load("aa3.png",Texture.class);
+		asset.load("aa4.png",Texture.class);
+		asset.load("aa5.png",Texture.class);
 		asset.load("crono.png",Texture.class);
 		asset.load("select.png", Texture.class);
 		asset.load("l3.png", Texture.class);

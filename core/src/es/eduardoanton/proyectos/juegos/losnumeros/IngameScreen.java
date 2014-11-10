@@ -23,7 +23,7 @@ public class IngameScreen implements Screen {
 	private LosNumeros game;
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
-	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,select,crono,l3,l5,l7;
+	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,aa1,aa2,aa3,aa4,aa5,select,crono,l3,l5,l7;
 	private Texture p2,p3,p5,p7,p9,p11,botonp;
 	private InputProcessor iproc;
 	private BitmapFont font;
@@ -53,6 +53,11 @@ public class IngameScreen implements Screen {
 		rr3 = LosNumeros.asset.get("rr3.png", Texture.class );
 		rr4 = LosNumeros.asset.get("rr4.png", Texture.class );
 		rr5 = LosNumeros.asset.get("rr5.png", Texture.class );
+		aa1 = LosNumeros.asset.get("aa1.png", Texture.class );
+		aa2 = LosNumeros.asset.get("aa2.png", Texture.class );
+		aa3 = LosNumeros.asset.get("aa3.png", Texture.class );
+		aa4 = LosNumeros.asset.get("aa4.png", Texture.class );
+		aa5 = LosNumeros.asset.get("aa5.png", Texture.class );
 		l3 =LosNumeros.asset.get("l3.png", Texture.class );
 		l5 =LosNumeros.asset.get("l5.png", Texture.class );
 		l7 =LosNumeros.asset.get("l7.png", Texture.class );
@@ -219,15 +224,25 @@ public class IngameScreen implements Screen {
 				case 5: tmp = gr5;break;
 			}
 			
-		}else{
+		}else if (ficha.color == FichaColor.ROJO){
 			switch (ficha.val){
-			case 1: tmp = rr1;break;
-			case 2: tmp = rr2;break;
-			case 3: tmp = rr3;break;
-			case 4: tmp = rr4;break;
-			case 5: tmp = rr5;break;
+				case 1: tmp = rr1;break;
+				case 2: tmp = rr2;break;
+				case 3: tmp = rr3;break;
+				case 4: tmp = rr4;break;
+				case 5: tmp = rr5;break;
+			}
+		}else if (ficha.color == FichaColor.AMARILLO){
+			switch (ficha.val){
+			case 1: tmp = aa1;break;
+			case 2: tmp = aa2;break;
+			case 3: tmp = aa3;break;
+			case 4: tmp = aa4;break;
+			case 5: tmp = aa5;break;
 		}
+			
 		}
+		
 				
 		if (ficha.y % 2 == 0){
 			batch.draw(tmp, 343 + 83*ficha.x ,23 +72*ficha.y);

@@ -16,7 +16,7 @@ public class GameWorld {
 	public Ficha[][] fichas;
 	public Stack<Ficha> linea;
 	public int lastx,lasty,lastsx,lastsy;
-	public int grises, rojos,puntos;
+	public int grises, rojos,amarillos,puntos;
 	public float gametime,gametimereload;
 	public Sound correctoS,failS,recargaS,timeS;
 	private boolean timeexpired = false;
@@ -38,11 +38,12 @@ public class GameWorld {
 	private void calculate(){
 		rojos = 0;
 		grises = 0;
+		amarillos = 0;
 		for ( Ficha fichita : linea){
-			if (fichita.color == FichaColor.GRIS){
-				grises+=fichita.val;
-			}else{
-				rojos+=fichita.val;
+			switch( fichita.color){
+				case GRIS: 	grises+=fichita.val;break;
+				case ROJO: 	rojos+=fichita.val;break;
+				case AMARILLO: amarillos+=fichita.val;break;
 			}
 		}
 	}
@@ -61,7 +62,7 @@ public class GameWorld {
 		recargaS.play();
 		for (int j=0;j<9;j++){
 			for (int i=0;i<11;i++){
-				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,1));
+				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,2));
 			}
 		}
 		lastx = -1;
@@ -201,14 +202,20 @@ public class GameWorld {
 			puntos += (linea.size() -3)*2;
 		}
 		for (Ficha ficha : linea){
-			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 5),MathUtils.random(0,1));	
+			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 5),MathUtils.random(0,2));	
 		}
 		linea.clear();
 	}
 	
 	public void checkTrail(){
 		calculate();
-		if (grises == rojos){
+		if (grises == rojos && rojos == amarillos){
+			successTrail();
+		}else if (amarillos == 0 && grises == rojos){
+			successTrail();
+		}else if (grises == 0 && rojos == amarillos){
+			successTrail();
+		}else if (rojos == 0 && grises == amarillos){
 			successTrail();
 		}else{
 			failTrail();

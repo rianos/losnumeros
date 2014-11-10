@@ -6,7 +6,7 @@ public class Ficha {
 	public int x;
 	public int y;
 	public int val;
-	public enum FichaColor  { ROJO, GRIS};
+	public enum FichaColor  { ROJO, GRIS, AMARILLO};
 	public FichaColor color;
 	public boolean marcada;
 	public boolean paredes[] = {false,false,false,false,false,false};
@@ -14,11 +14,12 @@ public class Ficha {
 	public Ficha(int posx,int posy,int val, int color){
 		this.x = posx;
 		this.y = posy;
-		if (color == 0){
-			this.color = FichaColor.ROJO;
-		}else{
-			this.color = FichaColor.GRIS;
+		switch (color){
+			case 0:  this.color = FichaColor.ROJO;break;
+			case 1:  this.color = FichaColor.GRIS;break;
+			case 2:  this.color = FichaColor.AMARILLO;break;
 		}
+		
 		this.marcada = false;
 		this.val = val;
 	}
