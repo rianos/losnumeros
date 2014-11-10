@@ -22,6 +22,7 @@ public class IngameScreen implements Screen {
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
 	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,select,crono,l3,l5,l7;
+	private Texture p2,p3,p5,p7,p9,p11,botonp;
 	private InputProcessor iproc;
 	private BitmapFont font;
 
@@ -52,6 +53,13 @@ public class IngameScreen implements Screen {
 		l3 =LosNumeros.asset.get("l3.png", Texture.class );
 		l5 =LosNumeros.asset.get("l5.png", Texture.class );
 		l7 =LosNumeros.asset.get("l7.png", Texture.class );
+		p2 =LosNumeros.asset.get("p2.png", Texture.class );
+		p3 =LosNumeros.asset.get("p3.png", Texture.class );
+		p5 =LosNumeros.asset.get("p5.png", Texture.class );
+		p7 =LosNumeros.asset.get("p7.png", Texture.class );
+		p9 =LosNumeros.asset.get("p9.png", Texture.class );
+		p11 =LosNumeros.asset.get("p11.png", Texture.class );
+		botonp = LosNumeros.asset.get("botonp.png", Texture.class );
 		
 		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );
@@ -73,6 +81,7 @@ public class IngameScreen implements Screen {
 		render_trail(delta);
 		batch.draw(crono,40,40);
 		batch.draw(red, 2, -1);
+		batch.draw(botonp,10,450);
 		batch.end();
 	}
 
@@ -161,6 +170,21 @@ public class IngameScreen implements Screen {
 		}
 	}
 	
+	public void dibujaParedesFicha(Ficha ficha, int x, int y){
+		for (int i=0;i<=5;i++){
+			if (ficha.paredes[i]){
+				switch (i){
+					case 0: batch.draw(p2, x ,y); break;
+					case 1: batch.draw(p3, x ,y); break;
+					case 2: batch.draw(p5, x ,y); break;
+					case 3: batch.draw(p7, x ,y); break;
+					case 4: batch.draw(p9, x ,y); break;
+					case 5: batch.draw(p11, x ,y); break;
+				}
+			}
+		}
+	}
+	
 	public void render_ficha(Ficha ficha, float delta){
 		Texture tmp = gr1;
 		if( ficha.color == FichaColor.GRIS){
@@ -184,11 +208,13 @@ public class IngameScreen implements Screen {
 				
 		if (ficha.y % 2 == 0){
 			batch.draw(tmp, 343 + 83*ficha.x ,23 +72*ficha.y);
+			dibujaParedesFicha(ficha,343 + 83*ficha.x,23 +72*ficha.y);
 			if ( ficha.marcada){
 				batch.draw(select, 343 + 83*ficha.x ,23 +72*ficha.y);
 			}
 		}else{
 			batch.draw(tmp, 384 + 83*ficha.x ,23 + 72*ficha.y);
+			dibujaParedesFicha(ficha, 384 + 83*ficha.x,23 +72*ficha.y);
 			if (ficha.marcada){
 				batch.draw(select, 384 + 83*ficha.x ,23 + 72*ficha.y);
 			}

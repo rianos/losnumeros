@@ -68,19 +68,96 @@ public class GameWorld {
 		gametime-=5f;
 	}
 	
+	public void generarPared(){
+		fichas[MathUtils.random(0,10)][MathUtils.random(0,8)].generaPared();
+	}
+	
+	private boolean isContigua(int x, int y){
+		return 
+				(lastx !=x && lasty !=y && ((x == lastx + 1 || x == lastx - 1 || lastx == -1) && (y == lasty + 1 || y == lasty - 1 || lasty == -1)))
+			||	(lastx != x && lasty == y && (x == lastx + 1 || x == lastx - 1 || lastx == -1))
+			||  (lasty != y  && lastx == x && (y == lasty + 1 || y == lasty - 1 || lasty == -1));
+	}
+	
+	private boolean isContiguaLastSelected(int x, int y){
+		return 
+				(lastsx !=x && lastsy !=y && ((x == lastsx + 1 || x == lastsx - 1 || lastsx == -1) && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1)))
+				||	(lastsx != x && lastsy == y && (x == lastsx + 1 || x == lastsx - 1 || lastsx == -1))
+				||  (lastsy != y  && lastsx == x && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1));
+	}
+	
+	private void noSelected(int x, int y){
+		// Si es la primera la seleccionamos si o si
+		if (linea.size() < 1){
+			fichas[x][y].marcada = true; 
+			linea.push(fichas[x][y]);
+			lastx = x;
+			lasty = y;
+			lastsx = x;
+			lastsy = y;
+		}else {
+			// Si es contigua a la ultima seleccionada la marcamos
+			if (isContiguaLastSelected(x,y) && noPared(x,y)){		
+				fichas[x][y].marcada = true; 
+				linea.push(fichas[x][y]);
+				lastx = x;
+				lasty = y;
+				lastsx = x;
+				lastsy = y;
+			// No es contigua a la seleccioanda
+			}else{
+				lastx = x;
+				lasty = y;
+			}
+		}
+	}
+	
+	
+	public boolean noPared(int x, int y){
+		Ficha ficha = fichas[lastsx][lastsy];
+		Ficha ficha2 = fichas[x][y];
+		if ( y == lastsy && x == lastsx + 1){ // Esta a las 3
+			Gdx.app.log("LOG","1");
+			return !ficha.paredes[1] && !ficha2.paredes[4];
+		}else if (  y == lastsy && x == lastsx - 1){ // Esta a las 9
+			Gdx.app.log("LOG","2");
+			return !ficha.paredes[4]&& !ficha2.paredes[1];
+		}else if ( x == lastsx && y == lastsy - 1 && lastsy % 2 == 0){ // esta a las 5
+			Gdx.app.log("LOG","3");
+			return !ficha.paredes[2]&& !ficha2.paredes[5];
+		}else if ( x == lastsx +1 && y == lastsy - 1){
+			Gdx.app.log("LOG","4");
+			return !ficha.paredes[2]&& !ficha2.paredes[5];
+		}else if ( x == lastsx && y == lastsy + 1 && lastsy % 2 != 0 ){
+			Gdx.app.log("LOG","5");
+			return !ficha.paredes[5]&& !ficha2.paredes[2];
+		}else if ( x == lastsx -1 && y == lastsy + 1 ){
+			Gdx.app.log("LOG","6");
+			return !ficha.paredes[5]&& !ficha2.paredes[2];
+		}else if ( x == lastsx && y == lastsy - 1 ){
+			Gdx.app.log("LOG","7");
+			return !ficha.paredes[3]&& !ficha2.paredes[0];
+		}else if ( x == lastsx - 1 && y == lastsy - 1 ){
+			Gdx.app.log("LOG","8");
+			return !ficha.paredes[3]&& !ficha2.paredes[0];
+		}else if ( x == lastsx  && y == lastsy + 1 ){
+			Gdx.app.log("LOG","9");
+			return !ficha.paredes[0]&& !ficha2.paredes[3];
+		}else if ( x == lastsx + 1 && y == lastsy + 1 ){
+			Gdx.app.log("LOG","10");
+			return !ficha.paredes[0] && !ficha2.paredes[3];
+		}
+		return false;
+	}
+	
 	public void selectCell(int x, int y){
 		// Comprobamos si se ha seleccionado una celda
 		if (( y % 2 == 0 && y >=0 && y<=8 && x<=10 && x >= 0) ||
 			( y % 2 != 0 && y>=0 && y<=8 && x<=9 && x>=0)){
-			// Comprobamos que la celda sea una contigua
-			//Gdx.app.log("GG", "x: " + x + " y: " + y + " lastx: " + lastx + " lasty: " +lasty);
-			if (
-				(lastx !=x && lasty !=y && ((x == lastx + 1 || x == lastx - 1 || lastx == -1) && (y == lasty + 1 || y == lasty - 1 || lasty == -1)))
-			||	(lastx != x && lasty == y && (x == lastx + 1 || x == lastx - 1 || lastx == -1))
-			||  (lasty != y  && lastx == x && (y == lasty + 1 || y == lasty - 1 || lasty == -1))
-				){ 
+			if (isContigua(x,y)){ 
+				//Esta la ficha seleccionada
 				if (linea.contains(fichas[x][y])){
-					if (linea.elementAt(linea.size() - 2) == fichas[x][y]){
+					if (((linea.size() -2) > -1) && linea.elementAt(linea.size() - 2) == fichas[x][y]){
 						linea.pop().marcada = false;
 						lastsx = linea.lastElement().x;
 						lastsy = linea.lastElement().y;
@@ -88,30 +165,7 @@ public class GameWorld {
 					lastx = x;
 					lasty = y;
 				}else{
-					if (linea.size() < 1){
-						fichas[x][y].marcada = true; 
-						linea.push(fichas[x][y]);
-						lastx = x;
-						lasty = y;
-						lastsx = x;
-						lastsy = y;
-					}else {
-						if (
-								(lastsx !=x && lastsy !=y && ((x == lastsx + 1 || x == lastsx - 1 || lastsx == -1) && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1)))
-							||	(lastsx != x && lastsy == y && (x == lastsx + 1 || x == lastsx - 1 || lastsx == -1))
-							||  (lastsy != y  && lastsx == x && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1))
-								){ 
-								fichas[x][y].marcada = true; 
-								linea.push(fichas[x][y]);
-								lastx = x;
-								lasty = y;
-								lastsx = x;
-								lastsy = y;		
-						}else{
-							lastx = x;
-							lasty = y;
-						}
-					}
+					noSelected(x,y);
 				}
 			}
 		}	

@@ -1,5 +1,7 @@
 package es.eduardoanton.proyectos.juegos.losnumeros;
 
+import com.badlogic.gdx.math.MathUtils;
+
 public class Ficha {
 	public int x;
 	public int y;
@@ -7,6 +9,7 @@ public class Ficha {
 	public enum FichaColor  { ROJO, GRIS};
 	public FichaColor color;
 	public boolean marcada;
+	public boolean paredes[] = {false,false,false,false,false,false};
 	
 	public Ficha(int posx,int posy,int val, int color){
 		this.x = posx;
@@ -19,16 +22,8 @@ public class Ficha {
 		this.marcada = false;
 		this.val = val;
 	}
-	/*
-	public String getTexture(){
-		String res = "";
-		switch(this.color){
-			case ROJO: res = "rr";
-						break;
-			case GRIS: res = "gr";
-		   		     break;
-		}
-		res = res + val + ".png";
-		return res;
-	}*/
+
+	public void generaPared(){
+		paredes[MathUtils.random(0,5)] = true;
+	}
 }

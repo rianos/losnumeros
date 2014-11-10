@@ -54,6 +54,13 @@ public class LosNumeros extends Game {
 		asset.load("l3.png", Texture.class);
 		asset.load("l5.png", Texture.class);
 		asset.load("l7.png", Texture.class);
+		asset.load("p2.png", Texture.class);
+		asset.load("p3.png", Texture.class);
+		asset.load("p5.png", Texture.class);
+		asset.load("p7.png", Texture.class);
+		asset.load("p9.png", Texture.class);
+		asset.load("p11.png", Texture.class);
+		asset.load("botonp.png", Texture.class);
 		asset.load("app_game_interactive_alert_tone_007.mp3", Sound.class);
 		asset.load("button_switch_gear_multimedia_web_interactive.mp3", Sound.class);
 		asset.load("multimedia_event_tone_2.mp3", Sound.class);
