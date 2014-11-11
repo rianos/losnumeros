@@ -18,6 +18,7 @@ public class GameWorld {
 	public int lastx,lasty,lastsx,lastsy;
 	public int grises, rojos,amarillos,puntos;
 	public float gametime,gametimereload;
+	public boolean famarillas;
 	public Sound correctoS,failS,recargaS,timeS;
 	private boolean timeexpired = false;
 	public static float GAMETIME = 180;
@@ -26,6 +27,7 @@ public class GameWorld {
 		this.game = game;
 		puntos = 0;
 		gametime =  GAMETIME;
+		famarillas = false;
 		fichas = new Ficha[11][9];
 		linea = new Stack<Ficha>();
 		correctoS= LosNumeros.asset.get("app_game_interactive_alert_tone_007.mp3", Sound.class);
@@ -60,9 +62,13 @@ public class GameWorld {
 	
 	public void generarPanel(){
 		recargaS.play();
+		int limite = 1;
+		if (famarillas){
+			limite = 2;
+		}
 		for (int j=0;j<9;j++){
 			for (int i=0;i<11;i++){
-				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,2));
+				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,limite));
 			}
 		}
 		lastx = -1;
@@ -152,6 +158,10 @@ public class GameWorld {
 		return false;
 	}
 	
+	public void generarAmarillas(){
+		famarillas = !famarillas;
+	}
+	
 	public void selectCell(int x, int y){
 		// Comprobamos si se ha seleccionado una celda
 		if (( y % 2 == 0 && y >=0 && y<=8 && x<=10 && x >= 0) ||
@@ -189,6 +199,19 @@ public class GameWorld {
 		gametime-=10f;
 	}
 	
+	private void nullTrail(){
+		linea.clear();
+		lastx = -1;
+		lasty = -1;
+		lastsx = -1;
+		lastsy = -1;
+		for (int j=0;j<9;j++){
+			for (int i=0;i<11;i++){
+				fichas[i][j].marcada = false;
+			}
+		}
+	}
+	
 	private void successTrail(){
 		correctoS.play();
 		lastx = -1;
@@ -196,13 +219,18 @@ public class GameWorld {
 		lastsx = -1;
 		lastsy = -1;
 		puntos += linea.size();
+		int limite = 1;
+		if (famarillas){
+			limite = 2;
+		}
 		// Si la linea es de 3 damos un segundo, y 2 segundos por cada celda mayor que 2
 		if ( linea.size() >= 3){
 			gametime = Math.min(GAMETIME, gametime + (1 + ((linea.size() - 3)*2)));
 			puntos += (linea.size() -3)*2;
 		}
 		for (Ficha ficha : linea){
-			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 5),MathUtils.random(0,2));	
+			
+			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 5),MathUtils.random(0,limite));	
 		}
 		linea.clear();
 	}
@@ -217,6 +245,8 @@ public class GameWorld {
 			successTrail();
 		}else if (rojos == 0 && grises == amarillos){
 			successTrail();
+		}else if (linea.size() == 1){
+			nullTrail();
 		}else{
 			failTrail();
 		}

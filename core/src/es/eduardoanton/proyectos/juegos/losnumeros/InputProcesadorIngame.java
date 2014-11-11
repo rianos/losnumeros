@@ -65,8 +65,12 @@ public class InputProcesadorIngame implements InputProcessor {
 			gamew.generarPanel();
 			return true;
 		}
-		if (touchpos.x > 10 && touchpos.x < 100 && touchpos.y > 437 && touchpos.y < 552 ){
+		if (touchpos.x > 4 && touchpos.x < 276 && touchpos.y > 337 && touchpos.y < 467 ){
 			gamew.generarPared();
+			return true;
+		}
+		if (touchpos.x > 4 && touchpos.x < 276 && touchpos.y > 536 && touchpos.y < 660 ){
+			gamew.generarAmarillas();
 			return true;
 		}
 		gamew.checkTrail();

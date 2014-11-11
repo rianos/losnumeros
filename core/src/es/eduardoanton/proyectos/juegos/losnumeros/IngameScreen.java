@@ -24,7 +24,7 @@ public class IngameScreen implements Screen {
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
 	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,aa1,aa2,aa3,aa4,aa5,select,crono,l3,l5,l7;
-	private Texture p2,p3,p5,p7,p9,p11,botonp;
+	private Texture p2,p3,p5,p7,p9,p11,botonp,botona;
 	private InputProcessor iproc;
 	private BitmapFont font;
 	private ShapeRenderer shapeRenderer;
@@ -67,8 +67,8 @@ public class IngameScreen implements Screen {
 		p7 =LosNumeros.asset.get("p7.png", Texture.class );
 		p9 =LosNumeros.asset.get("p9.png", Texture.class );
 		p11 =LosNumeros.asset.get("p11.png", Texture.class );
-		botonp = LosNumeros.asset.get("botonp.png", Texture.class );
-		
+		botonp = LosNumeros.asset.get("bparedes.png", Texture.class );
+		botona = LosNumeros.asset.get("bamarillas.png", Texture.class );
 		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );
 		iproc = new InputProcesadorIngame(cam,game.gamew);
@@ -91,7 +91,7 @@ public class IngameScreen implements Screen {
         shapeRenderer.end();*/
     
 		batch.begin();
-		font.draw(batch, "Grises:" + LosNumeros.gamew.grises + " Rojas: " + LosNumeros.gamew.rojos , 20 , 600);
+		//font.draw(batch, "Grises:" + LosNumeros.gamew.grises + " Rojas: " + LosNumeros.gamew.rojos , 20 , 600);
 		font.draw(batch, "PUNTOS:" + LosNumeros.gamew.puntos, 20, 300);
 		font.draw(batch, String.format("%.0f", LosNumeros.gamew.gametime), 15, 682);
 		batch.draw(marco, 295, -25);
@@ -101,7 +101,8 @@ public class IngameScreen implements Screen {
 		render_trail(delta);
 		batch.draw(crono,40,40);
 		batch.draw(red, 2, -1);
-		batch.draw(botonp,10,450);
+		batch.draw(botonp,10,350);
+		batch.draw(botona,10,550);
 		batch.end();
 		/*shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
@@ -247,15 +248,15 @@ public class IngameScreen implements Screen {
 		if (ficha.y % 2 == 0){
 			batch.draw(tmp, 343 + 83*ficha.x ,23 +72*ficha.y);
 			dibujaParedesFicha(ficha,343 + 83*ficha.x,23 +72*ficha.y);
-			if ( ficha.marcada){
-				batch.draw(select, 343 + 83*ficha.x ,23 +72*ficha.y);
-			}
+			//if ( ficha.marcada){
+			//	batch.draw(select, 343 + 83*ficha.x ,23 +72*ficha.y);
+			//}
 		}else{
 			batch.draw(tmp, 384 + 83*ficha.x ,23 + 72*ficha.y);
 			dibujaParedesFicha(ficha, 384 + 83*ficha.x,23 +72*ficha.y);
-			if (ficha.marcada){
-				batch.draw(select, 384 + 83*ficha.x ,23 + 72*ficha.y);
-			}
+			//if (ficha.marcada){
+			//	batch.draw(select, 384 + 83*ficha.x ,23 + 72*ficha.y);
+			//}
 		}
 	}
 	
