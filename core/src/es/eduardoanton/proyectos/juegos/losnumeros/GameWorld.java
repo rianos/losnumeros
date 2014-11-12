@@ -18,7 +18,7 @@ public class GameWorld {
 	public int lastx,lasty,lastsx,lastsy;
 	public int grises, rojos,amarillos,puntos;
 	public float gametime,gametimereload;
-	public boolean famarillas;
+	public boolean famarillas,modorodeo;
 	public Sound correctoS,failS,recargaS,timeS;
 	private boolean timeexpired = false;
 	public static float GAMETIME = 180;
@@ -28,6 +28,7 @@ public class GameWorld {
 		puntos = 0;
 		gametime =  GAMETIME;
 		famarillas = false;
+		modorodeo = true;
 		fichas = new Ficha[11][9];
 		linea = new Stack<Ficha>();
 		correctoS= LosNumeros.asset.get("app_game_interactive_alert_tone_007.mp3", Sound.class);
@@ -160,6 +161,16 @@ public class GameWorld {
 	
 	public void generarAmarillas(){
 		famarillas = !famarillas;
+	}
+	
+	public void modoRodeo(){
+		modorodeo = !modorodeo;
+	}
+	
+	public void generarEspecial(){
+		int x = MathUtils.random(0,10);
+		int y = MathUtils.random(0,8);
+		fichas[x][y] = new Ficha(x,y,5,3);	
 	}
 	
 	public void selectCell(int x, int y){

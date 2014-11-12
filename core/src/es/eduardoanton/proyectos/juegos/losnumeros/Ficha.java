@@ -6,7 +6,7 @@ public class Ficha {
 	public int x;
 	public int y;
 	public int val;
-	public enum FichaColor  { ROJO, GRIS, AMARILLO};
+	public enum FichaColor  { ROJO, GRIS, AMARILLO, E_RODEO};
 	public FichaColor color;
 	public boolean marcada;
 	public boolean paredes[] = {false,false,false,false,false,false};
@@ -18,6 +18,7 @@ public class Ficha {
 			case 0:  this.color = FichaColor.ROJO;break;
 			case 1:  this.color = FichaColor.GRIS;break;
 			case 2:  this.color = FichaColor.AMARILLO;break;
+			case 3:  this.color = FichaColor.E_RODEO;break;
 		}
 		
 		this.marcada = false;
@@ -25,6 +26,8 @@ public class Ficha {
 	}
 
 	public void generaPared(){
-		paredes[MathUtils.random(0,5)] = true;
+		if (color != FichaColor.E_RODEO){
+			paredes[MathUtils.random(0,5)] = true;
+		}
 	}
 }

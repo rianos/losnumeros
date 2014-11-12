@@ -23,8 +23,8 @@ public class IngameScreen implements Screen {
 	private LosNumeros game;
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
-	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,aa1,aa2,aa3,aa4,aa5,select,crono,l3,l5,l7;
-	private Texture p2,p3,p5,p7,p9,p11,botonp,botona;
+	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,erodeo,aa1,aa2,aa3,aa4,aa5,select,crono,l3,l5,l7;
+	private Texture p2,p3,p5,p7,p9,p11,botonp,botona,botone,botonr,boton8min;
 	private InputProcessor iproc;
 	private BitmapFont font;
 	private ShapeRenderer shapeRenderer;
@@ -58,6 +58,7 @@ public class IngameScreen implements Screen {
 		aa3 = LosNumeros.asset.get("aa3.png", Texture.class );
 		aa4 = LosNumeros.asset.get("aa4.png", Texture.class );
 		aa5 = LosNumeros.asset.get("aa5.png", Texture.class );
+		erodeo = LosNumeros.asset.get("erodeo.png", Texture.class);
 		l3 =LosNumeros.asset.get("l3.png", Texture.class );
 		l5 =LosNumeros.asset.get("l5.png", Texture.class );
 		l7 =LosNumeros.asset.get("l7.png", Texture.class );
@@ -69,6 +70,9 @@ public class IngameScreen implements Screen {
 		p11 =LosNumeros.asset.get("p11.png", Texture.class );
 		botonp = LosNumeros.asset.get("bparedes.png", Texture.class );
 		botona = LosNumeros.asset.get("bamarillas.png", Texture.class );
+		botone = LosNumeros.asset.get("bespecial.png", Texture.class);
+		boton8min = LosNumeros.asset.get("b8minimo.png", Texture.class);
+		botonr = LosNumeros.asset.get("brodeo.png", Texture.class);
 		select = LosNumeros.asset.get("select.png", Texture.class );
 		crono = LosNumeros.asset.get("crono.png", Texture.class );
 		iproc = new InputProcesadorIngame(cam,game.gamew);
@@ -102,6 +106,12 @@ public class IngameScreen implements Screen {
 		batch.draw(crono,40,40);
 		batch.draw(red, 2, -1);
 		batch.draw(botonp,10,350);
+		batch.draw(botone,10,400);
+		if (game.gamew.modorodeo){
+			batch.draw(botonr,10,450);
+		}else{
+			batch.draw(boton8min,10,450);
+		}
 		batch.draw(botona,10,550);
 		batch.end();
 		/*shapeRenderer.begin(ShapeType.Filled);
@@ -240,10 +250,10 @@ public class IngameScreen implements Screen {
 			case 3: tmp = aa3;break;
 			case 4: tmp = aa4;break;
 			case 5: tmp = aa5;break;
+			}	
+		}else if (ficha.color == FichaColor.E_RODEO){
+			tmp = erodeo;
 		}
-			
-		}
-		
 				
 		if (ficha.y % 2 == 0){
 			batch.draw(tmp, 343 + 83*ficha.x ,23 +72*ficha.y);
