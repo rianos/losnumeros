@@ -762,8 +762,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="12.33662"
-     inkscape:cy="538.48859"
+     inkscape:cx="-142.66338"
+     inkscape:cy="338.48859"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1637,5 +1637,53 @@
          id="tspan8598-5-0-5"
          x="-69.011452"
          y="279.23718">5</tspan></text>
-  </g>
+    <rect
+       style="fill:#cccccc;fill-opacity:1;stroke:none"
+       id="rect3198"
+       width="273"
+       height="108"
+       x="-577"
+       y="645.36218"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/bparedes.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3968"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(26,2)"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/bparedes.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81"><flowRegion
+         id="flowRegion3970"><rect
+           id="rect3972"
+           width="230"
+           height="54"
+           x="-565"
+           y="669.36218" /></flowRegion><flowPara
+         id="flowPara3974"> Paredes</flowPara></flowRoot>    <rect
+       style="fill:#fffd00;fill-opacity:1;stroke:none"
+       id="rect3198-6"
+       width="273"
+       height="108"
+       x="-581.5"
+       y="839.36218"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/bamarillas.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3968-2"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       transform="translate(21.5,196)"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/bamarillas.png"
+       inkscape:export-xdpi="81"
+       inkscape:export-ydpi="81"><flowRegion
+         id="flowRegion3970-7"><rect
+           id="rect3972-8"
+           width="230"
+           height="54"
+           x="-565"
+           y="669.36218" /></flowRegion><flowPara
+         id="flowPara3974-8">Amarillas</flowPara></flowRoot>  </g>
 </svg>
