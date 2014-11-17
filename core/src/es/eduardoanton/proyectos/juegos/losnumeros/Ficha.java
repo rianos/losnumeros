@@ -25,6 +25,11 @@ public class Ficha {
 		this.val = val;
 	}
 
+	public Ficha(int x,int y){
+		this.x = x;
+		this.y = y;
+	}
+	
 	public void generaPared(){
 		if (color != FichaColor.E_RODEO){
 			paredes[MathUtils.random(0,5)] = true;

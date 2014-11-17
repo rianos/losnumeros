@@ -22,6 +22,8 @@ public class GameWorld {
 	public Sound correctoS,failS,recargaS,timeS;
 	private boolean timeexpired = false;
 	public static float GAMETIME = 180;
+	public static int MINROWSPECIAL = 8;
+	public static int PRIZE_ESPECIAL = 50;
 	
 	public GameWorld(LosNumeros game){
 		this.game = game;
@@ -82,22 +84,48 @@ public class GameWorld {
 	}
 	
 	private boolean isContigua(int x, int y){
-		return 
-				(lastx !=x && lasty !=y && ((x == lastx + 1 || x == lastx - 1 || lastx == -1) && (y == lasty + 1 || y == lasty - 1 || lasty == -1)))
-			||	(lastx != x && lasty == y && (x == lastx + 1 || x == lastx - 1 || lastx == -1))
-			||  (lasty != y  && lastx == x && (y == lasty + 1 || y == lasty - 1 || lasty == -1));
+		if ( y %2 != 0){
+			return (lastx ==  x-1 && lasty == y) ||
+					(lastx == x && lasty == y - 1) ||
+					(lastx == x + 1 && lasty == y - 1 ) ||
+					(lastx == x + 1 && lasty == y ) ||
+					(lastx == x + 1 && lasty == y +1 ) ||
+					(lastx == x && lasty == y +1 ) ||
+					(lastx == -1 && lasty == -1);
+		}else{
+			return (lastx ==  x-1 && lasty == y) ||
+					(lastx == x && lasty == y - 1) ||
+					(lastx == x - 1 && lasty == y - 1 ) ||
+					(lastx == x + 1 && lasty == y ) ||
+					(lastx == x - 1 && lasty == y +1 ) ||
+					(lastx == x && lasty == y +1 ) ||
+					(lastx == -1 && lasty == -1);
+		}
 	}
 	
 	private boolean isContiguaLastSelected(int x, int y){
-		return 
-				(lastsx !=x && lastsy !=y && ((x == lastsx + 1 || x == lastsx - 1 || lastsx == -1) && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1)))
-				||	(lastsx != x && lastsy == y && (x == lastsx + 1 || x == lastsx - 1 || lastsx == -1))
-				||  (lastsy != y  && lastsx == x && (y == lastsy + 1 || y == lastsy - 1 || lastsy == -1));
+		if ( y %2 != 0){
+			return (lastsx ==  x-1 && lastsy == y) ||
+					(lastsx == x && lastsy == y - 1) ||
+					(lastsx == x + 1 && lastsy == y - 1 ) ||
+					(lastsx == x + 1 && lastsy == y ) ||
+					(lastsx == x + 1 && lastsy == y +1 ) ||
+					(lastsx == x && lastsy == y +1 ) ||
+					(lastsx == -1 && lastsy == -1);
+		}else{
+			return (lastsx ==  x-1 && lastsy == y) ||
+					(lastsx == x && lastsy == y - 1) ||
+					(lastsx == x - 1 && lastsy == y - 1 ) ||
+					(lastsx == x + 1 && lastsy == y ) ||
+					(lastsx == x - 1 && lastsy == y +1 ) ||
+					(lastsx == x && lastsy == y +1 ) ||
+					(lastsx == -1 && lastsy == -1);
+		}
 	}
 	
 	private void noSelected(int x, int y){
 		// Si es la primera la seleccionamos si o si
-		if (linea.size() < 1){
+		if (linea.size() < 1 ){
 			fichas[x][y].marcada = true; 
 			linea.push(fichas[x][y]);
 			lastx = x;
@@ -188,7 +216,14 @@ public class GameWorld {
 					lastx = x;
 					lasty = y;
 				}else{
-					noSelected(x,y);
+					if (fichas[x][y].color != FichaColor.E_RODEO && modorodeo ){
+						noSelected(x,y);
+					}else if (!modorodeo){
+						noSelected(x,y);
+					}else{
+						lastx = x;
+						lasty = y;
+					}
 				}
 			}
 		}	
@@ -223,6 +258,143 @@ public class GameWorld {
 		}
 	}
 	
+	private void psuccessTrail(){
+		if (modorodeo){
+			checkRodeo();
+			successTrail();
+		}else{
+			if ( contieneEspecial()){
+				if (linea.size() >= GameWorld.MINROWSPECIAL){
+					puntos+=GameWorld.PRIZE_ESPECIAL;
+					successTrail();
+				}else{
+					failTrail();
+				}
+			}else{
+				successTrail();
+			}
+		}
+	}
+	
+	private void checkRodeo(){
+		for (int j=0;j<9;j++){
+			for (int i=0;i<11;i++){
+				if (fichas[i][j].color == FichaColor.E_RODEO ){
+					if (checkMeRodea(i,j)){
+						int limite = 1;
+						if (famarillas){
+							limite = 2;
+						}
+						fichas[i][j] =new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,limite));	
+						puntos+=100;
+					}
+				}
+			}
+		}
+	}
+	
+	private boolean checkMeRodea(int x, int y){
+		Stack<Ficha> vecinos;
+		boolean rodeado = true;
+		vecinos = getVecinos(x,y);
+		Gdx.app.log("ESPCIAS", "Mis vecinos" + x + " -- " + y);
+		for (Ficha vecino : vecinos){
+			Gdx.app.log("SSS", "Mis vecinos" + vecino.x + " -- " + vecino.y);
+			if (! linea.contains(fichas[vecino.x][vecino.y])){
+				rodeado = false;break;
+			}
+		}
+		return rodeado;
+	}
+	
+	private Stack<Ficha> getVecinos(int x,int y){
+		Stack<Ficha> temp = new Stack<Ficha>();
+		if ( y %2 != 0){
+			if (mete_ficha(x-1,y)){
+				temp.add(new Ficha(x-1,y));
+				Gdx.app.log("--1","--1");
+			}
+			if	(mete_ficha(x ,y - 1)){
+				temp.add(new Ficha(x ,y - 1));
+				Gdx.app.log("--2","--1");
+			}
+			if (mete_ficha(x + 1 ,y - 1)){
+				temp.add(new Ficha(x + 1 ,y - 1));
+				Gdx.app.log("--3","--1");
+			}
+			if (mete_ficha(x + 1,y)){
+				temp.add(new Ficha(x + 1 ,y));
+				Gdx.app.log("--4","--1");
+			}
+			if (mete_ficha(x + 1,y + 1)){
+				temp.add(new Ficha(x + 1 ,y + 1));
+				Gdx.app.log("--5","--1");
+			}
+			if (mete_ficha(x,y + 1)){
+				temp.add(new Ficha(x ,y + 1));
+				Gdx.app.log("--6","--1");
+			}
+		
+		}else{
+			if (mete_ficha(x-1,y)){
+				temp.add(new Ficha(x-1,y));
+				Gdx.app.log("--1","--2");
+			}
+			if (mete_ficha(x ,y - 1)){
+				temp.add(new Ficha(x, y -1 ));
+				Gdx.app.log("--2","--2");
+			}
+			if (mete_ficha(x - 1 ,y - 1)){
+				temp.add(new Ficha(x-1,y-1));
+				Gdx.app.log("--3","--2");
+			}
+			if (mete_ficha(x + 1,y)){
+				temp.add(new Ficha(x+1,y));
+				Gdx.app.log("--4","--2");
+			}
+			if (mete_ficha(x - 1,y + 1)){
+				temp.add(new Ficha(x-1,y+1));
+				Gdx.app.log("--5","--2");
+			}
+			if (mete_ficha(x,y + 1)){
+				temp.add(new Ficha(x, y +1));
+				Gdx.app.log("--6","--2");
+			}
+		}
+		return temp;
+	}
+	
+	private boolean mete_ficha(int x, int y){
+		boolean ret = true;
+		if (y % 2 == 0){
+			if (x >= 11 || x < 0){
+				ret = false;
+			}
+			if (y >= 9 || y < 0){
+				ret = false;
+			}
+		}else{
+			if (x >= 10 || x < 0){
+				ret = false;
+			}
+			if (y >= 9 || y < 0){
+				ret = false;
+			}
+		}
+		return ret;
+	}
+	
+	
+	private boolean contieneEspecial(){
+		boolean resultado = false;
+		for (Ficha ficha : linea){		
+			if (ficha.color == FichaColor.E_RODEO ){
+				resultado = true;break;
+			}
+		}
+		return resultado;
+	}
+	
 	private void successTrail(){
 		correctoS.play();
 		lastx = -1;
@@ -239,8 +411,7 @@ public class GameWorld {
 			gametime = Math.min(GAMETIME, gametime + (1 + ((linea.size() - 3)*2)));
 			puntos += (linea.size() -3)*2;
 		}
-		for (Ficha ficha : linea){
-			
+		for (Ficha ficha : linea){		
 			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 5),MathUtils.random(0,limite));	
 		}
 		linea.clear();
@@ -249,13 +420,13 @@ public class GameWorld {
 	public void checkTrail(){
 		calculate();
 		if (grises == rojos && rojos == amarillos){
-			successTrail();
+			psuccessTrail();
 		}else if (amarillos == 0 && grises == rojos){
-			successTrail();
+			psuccessTrail();
 		}else if (grises == 0 && rojos == amarillos){
-			successTrail();
+			psuccessTrail();
 		}else if (rojos == 0 && grises == amarillos){
-			successTrail();
+			psuccessTrail();
 		}else if (linea.size() == 1){
 			nullTrail();
 		}else{
