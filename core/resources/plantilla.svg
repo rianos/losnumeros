@@ -7,6 +7,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
@@ -17,6 +18,17 @@
    sodipodi:docname="plantilla.svg">
   <defs
      id="defs14526">
+    <linearGradient
+       id="linearGradient4153">
+      <stop
+         style="stop-color:#ddd932;stop-opacity:1;"
+         offset="0"
+         id="stop4155" />
+      <stop
+         style="stop-color:#ffa30d;stop-opacity:0.69444442;"
+         offset="1"
+         id="stop4157" />
+    </linearGradient>
     <filter
        inkscape:label="Diffuse light"
        inkscape:menu="ABCs"
@@ -817,6 +829,111 @@
          k3="0.6"
          id="feComposite9805-7-2-5" />
     </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter9787-1-8-6-0-9-4">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur9789-7-8-7-7-7" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting9791-4-2-1-5-1">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight9793-0-4-7-0-4" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite9795-9-5-5-7-7-6" />
+    </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter9787-1-8-5-2">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur9789-7-8-8-3" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting9791-4-2-5-0">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight9793-0-4-4-3" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite9795-9-5-59-8" />
+    </filter>
+    <filter
+       inkscape:label="Diffuse light"
+       inkscape:menu="ABCs"
+       inkscape:menu-tooltip="Basic diffuse bevel to use for building textures"
+       color-interpolation-filters="sRGB"
+       id="filter9787-1-8-6-34">
+      <feGaussianBlur
+         stdDeviation="6"
+         in="SourceGraphic"
+         result="result0"
+         id="feGaussianBlur9789-7-8-7-8" />
+      <feDiffuseLighting
+         diffuseConstant="1"
+         surfaceScale="10"
+         result="result5"
+         id="feDiffuseLighting9791-4-2-1-53">
+        <feDistantLight
+           elevation="25"
+           azimuth="235"
+           id="feDistantLight9793-0-4-7-9" />
+      </feDiffuseLighting>
+      <feComposite
+         k4="0"
+         k1="1"
+         in2="SourceGraphic"
+         in="result5"
+         result="result4"
+         operator="arithmetic"
+         k2="0"
+         k3="0.6"
+         id="feComposite9795-9-5-5-1" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4153"
+       id="linearGradient4159"
+       x1="-1219"
+       y1="755.36218"
+       x2="-963"
+       y2="1249.3622"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -825,9 +942,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="-58.115158"
-     inkscape:cy="338.48859"
+     inkscape:zoom="0.5"
+     inkscape:cx="-174.86386"
+     inkscape:cy="467.70409"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1945,5 +2062,119 @@
            x="-565"
            y="669.36218" /></flowRegion><flowPara
          id="flowPara3974-5-9-8-1"
-         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans">8 minimo</flowPara></flowRoot>  </g>
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Sans;-inkscape-font-specification:Sans">8 minimo</flowPara></flowRoot>    <rect
+       style="fill:url(#linearGradient4159);fill-opacity:1;stroke:none"
+       id="rect3372"
+       width="512"
+       height="512"
+       x="-1325"
+       y="687.36218"
+       ry="176"
+       inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/res/drawable-xxhdpi/ic_launcher.png"
+       inkscape:export-xdpi="25.3125"
+       inkscape:export-ydpi="25.3125" />
+    <g
+       id="g3374"
+       transform="matrix(2.7405521,0,0,2.7405521,1340.8877,271.74707)">
+      <path
+         inkscape:export-ydpi="81"
+         inkscape:export-xdpi="81"
+         inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa1.png"
+         sodipodi:type="star"
+         style="fill:#ebcc86;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-6-0-9-4)"
+         id="path16839-1-8-3"
+         sodipodi:sides="6"
+         sodipodi:cx="459.0853"
+         sodipodi:cy="413.06445"
+         sodipodi:r1="69.623268"
+         sodipodi:r2="60.295517"
+         sodipodi:arg1="-1.0471976"
+         sodipodi:arg2="-0.52359878"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+         transform="matrix(0,0.66721954,-0.66721954,0,-638.39533,-67.948498)" />
+      <text
+         inkscape:export-ydpi="81"
+         inkscape:export-xdpi="81"
+         inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/aa1.png"
+         sodipodi:linespacing="125%"
+         id="text8568-60-2-6-5"
+         y="261.69031"
+         x="-934.92188"
+         style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+         xml:space="preserve"><tspan
+           y="261.69031"
+           x="-934.92188"
+           id="tspan8570-7-2-7-4"
+           sodipodi:role="line">1</tspan></text>
+      <path
+         inkscape:export-ydpi="81.191933"
+         inkscape:export-xdpi="81.191933"
+         inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/rr1.png"
+         sodipodi:type="star"
+         style="fill:#d75a5a;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-5-2)"
+         id="path16839-4-6"
+         sodipodi:sides="6"
+         sodipodi:cx="459.0853"
+         sodipodi:cy="413.06445"
+         sodipodi:r1="69.623268"
+         sodipodi:r2="60.295517"
+         sodipodi:arg1="-1.0471976"
+         sodipodi:arg2="-0.52359878"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+         transform="matrix(0,0.66721954,-0.66721954,0,-592.39533,-29.9485)" />
+      <text
+         inkscape:export-ydpi="81.191933"
+         inkscape:export-xdpi="81.191933"
+         inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/rr1.png"
+         sodipodi:linespacing="125%"
+         id="text8568-60-7-8"
+         y="299.69025"
+         x="-888.92188"
+         style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+         xml:space="preserve"><tspan
+           y="299.69025"
+           x="-888.92188"
+           id="tspan8570-7-4-4"
+           sodipodi:role="line">1</tspan></text>
+      <path
+         inkscape:export-ydpi="81.191933"
+         inkscape:export-xdpi="81.191933"
+         inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/gr1.png"
+         sodipodi:type="star"
+         style="fill:#cccccc;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9787-1-8-6-34)"
+         id="path16839-1-23"
+         sodipodi:sides="6"
+         sodipodi:cx="459.0853"
+         sodipodi:cy="413.06445"
+         sodipodi:r1="69.623268"
+         sodipodi:r2="60.295517"
+         sodipodi:arg1="-1.0471976"
+         sodipodi:arg2="-0.52359878"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 493.89693,352.76893 34.81163,60.29552 -34.81163,60.29552 -69.62326,0 -34.81164,-60.29551 34.81163,-60.29552 z"
+         transform="matrix(0,0.66721954,-0.66721954,0,-576.39533,-91.9485)" />
+      <text
+         inkscape:export-ydpi="81.191933"
+         inkscape:export-xdpi="81.191933"
+         inkscape:export-filename="/home/eduardo/DESARROLLO/Proyectos/losnumeros/android/assets/gr1.png"
+         sodipodi:linespacing="125%"
+         id="text8568-60-2-5"
+         y="237.69031"
+         x="-872.92188"
+         style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Calibri;-inkscape-font-specification:Calibri"
+         xml:space="preserve"><tspan
+           y="237.69031"
+           x="-872.92188"
+           id="tspan8570-7-2-9"
+           sodipodi:role="line">1</tspan></text>
+    </g>
+  </g>
 </svg>

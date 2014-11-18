@@ -19,7 +19,7 @@ public class GameWorld {
 	public int grises, rojos,amarillos,puntos;
 	public float gametime,gametimereload;
 	public boolean famarillas,modorodeo;
-	public Sound correctoS,failS,recargaS,timeS;
+	public Sound correctoS,failS,recargaS,timeS,rodeoS;
 	private boolean timeexpired = false;
 	public static float GAMETIME = 180;
 	public static int MINROWSPECIAL = 8;
@@ -37,6 +37,7 @@ public class GameWorld {
 		failS = LosNumeros.asset.get("multimedia_event_tone_2.mp3", Sound.class);
 		recargaS =  LosNumeros.asset.get("button_switch_gear_multimedia_web_interactive.mp3", Sound.class);
 		timeS = LosNumeros.asset.get("clock_digital_alarm_beeping_003.mp3", Sound.class);
+		rodeoS = LosNumeros.asset.get("multimedia_system_alert_002.mp3", Sound.class);
 		generarPanel();
 	}
 	
@@ -266,6 +267,7 @@ public class GameWorld {
 			if ( contieneEspecial()){
 				if (linea.size() >= GameWorld.MINROWSPECIAL){
 					puntos+=GameWorld.PRIZE_ESPECIAL;
+					rodeoS.play();
 					successTrail();
 				}else{
 					failTrail();
@@ -287,6 +289,7 @@ public class GameWorld {
 						}
 						fichas[i][j] =new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,limite));	
 						puntos+=100;
+						rodeoS.play();
 					}
 				}
 			}
