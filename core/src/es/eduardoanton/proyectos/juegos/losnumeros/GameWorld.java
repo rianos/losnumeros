@@ -16,7 +16,7 @@ public class GameWorld {
 	public Ficha[][] fichas;
 	public Stack<Ficha> linea;
 	public int lastx,lasty,lastsx,lastsy;
-	public int grises, rojos,amarillos,puntos;
+	public int grises, rojos,amarillos,leones,osos,perros,morsas,burros,puntos;
 	public float gametime,gametimereload;
 	public boolean famarillas,modorodeo;
 	public Sound correctoS,failS,recargaS,timeS,rodeoS;
@@ -24,6 +24,8 @@ public class GameWorld {
 	public static float GAMETIME = 180;
 	public static int MINROWSPECIAL = 8;
 	public static int PRIZE_ESPECIAL = 50;
+	public static String[] modojuegoS = {"Adulto 2 colores", "Adulto 3 colores", "Ninos 2 fichas", "Ninos 3 fichas", "Ninos 4 fichas", "Ninos 5 fichas"};
+	public static int modojuego;
 	
 	public GameWorld(LosNumeros game){
 		this.game = game;
@@ -38,6 +40,7 @@ public class GameWorld {
 		recargaS =  LosNumeros.asset.get("button_switch_gear_multimedia_web_interactive.mp3", Sound.class);
 		timeS = LosNumeros.asset.get("clock_digital_alarm_beeping_003.mp3", Sound.class);
 		rodeoS = LosNumeros.asset.get("multimedia_system_alert_002.mp3", Sound.class);
+		modojuego = 0;
 		generarPanel();
 	}
 	
@@ -45,11 +48,22 @@ public class GameWorld {
 		rojos = 0;
 		grises = 0;
 		amarillos = 0;
+		leones = 0;
+		osos = 0;
+		perros = 0;
+		morsas = 0;
+		burros = 0;
+		
 		for ( Ficha fichita : linea){
 			switch( fichita.color){
 				case GRIS: 	grises+=fichita.val;break;
 				case ROJO: 	rojos+=fichita.val;break;
 				case AMARILLO: amarillos+=fichita.val;break;
+				case LEON:		leones+=fichita.val;break;
+				case OSO:		osos+=fichita.val;break;
+				case PERRO:	perros+=fichita.val;break;
+				case MORSA:	morsas+=fichita.val;break;
+				case BURRO:	burros+=fichita.val;break;
 			}
 		}
 	}
@@ -66,13 +80,20 @@ public class GameWorld {
 	
 	public void generarPanel(){
 		recargaS.play();
-		int limite = 1;
-		if (famarillas){
-			limite = 2;
+		int limiteinf = 0;
+		int limitesup = 0;
+		int limiteval = 1;
+		switch (modojuego){
+			case 0: limiteinf = 0;limitesup = 1;limiteval = 5;break;
+			case 1: limiteinf = 0;limitesup = 2;limiteval = 5;break;
+			case 2: limiteinf = 10;limitesup = 11; limiteval = 1;break;
+			case 3: limiteinf = 10;limitesup = 12; limiteval = 1;break;
+			case 4: limiteinf = 10;limitesup = 13; limiteval = 1;break;
+			case 5: limiteinf = 10;limitesup = 14; limiteval = 1;break;
 		}
 		for (int j=0;j<9;j++){
 			for (int i=0;i<11;i++){
-				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,limite));
+				fichas[i][j] = new Ficha(i,j,MathUtils.random(1, limiteval),MathUtils.random(limiteinf,limitesup));
 			}
 		}
 		lastx = -1;
@@ -188,8 +209,10 @@ public class GameWorld {
 		return false;
 	}
 	
-	public void generarAmarillas(){
-		famarillas = !famarillas;
+	public void cambiarModo(){
+		modojuego = (modojuego +1)%modojuegoS.length;
+		generarPanel();
+		gametime =  GAMETIME;
 	}
 	
 	public void modoRodeo(){
@@ -287,13 +310,28 @@ public class GameWorld {
 						if (famarillas){
 							limite = 2;
 						}
-						fichas[i][j] =new Ficha(i,j,MathUtils.random(1, 5),MathUtils.random(0,limite));	
+						generaHuecoFichaEspecial(i,j);	
 						puntos+=100;
 						rodeoS.play();
 					}
 				}
 			}
 		}
+	}
+
+	private void generaHuecoFichaEspecial(int x, int y){
+		int limiteinf = 0;
+		int limitesup = 0;
+		int limiteval = 1;
+		switch (modojuego){
+			case 0: limiteinf = 0;limitesup = 1;limiteval = 5;break;
+			case 1: limiteinf = 0;limitesup = 2;limiteval = 5;break;
+			case 2: limiteinf = 10;limitesup = 11; limiteval = 1;break;
+			case 3: limiteinf = 10;limitesup = 12; limiteval = 1;break;
+			case 4: limiteinf = 10;limitesup = 13; limiteval = 1;break;
+			case 5: limiteinf = 10;limitesup = 14; limiteval = 1;break;
+		}
+		fichas[x][y] =new Ficha(x,y,MathUtils.random(1, limiteval),MathUtils.random(limiteinf,limitesup));
 	}
 	
 	private boolean checkMeRodea(int x, int y){
@@ -405,9 +443,16 @@ public class GameWorld {
 		lastsx = -1;
 		lastsy = -1;
 		puntos += linea.size();
-		int limite = 1;
-		if (famarillas){
-			limite = 2;
+		int limiteinf = 0;
+		int limitesup = 0;
+		int limiteval = 1;
+		switch (modojuego){
+			case 0: limiteinf = 0;limitesup = 1;limiteval = 5;break;
+			case 1: limiteinf = 0;limitesup = 2;limiteval = 5;break;
+			case 2: limiteinf = 10;limitesup = 11; limiteval = 1;break;
+			case 3: limiteinf = 10;limitesup = 12; limiteval = 1;break;
+			case 4: limiteinf = 10;limitesup = 13; limiteval = 1;break;
+			case 5: limiteinf = 10;limitesup = 14; limiteval = 1;break;
 		}
 		// Si la linea es de 3 damos un segundo, y 2 segundos por cada celda mayor que 2
 		if ( linea.size() >= 3){
@@ -415,25 +460,74 @@ public class GameWorld {
 			puntos += (linea.size() -3)*2;
 		}
 		for (Ficha ficha : linea){		
-			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, 5),MathUtils.random(0,limite));	
+			fichas[ficha.x][ficha.y] =new Ficha(ficha.x,ficha.y,MathUtils.random(1, limiteval),MathUtils.random(limiteinf,limitesup));	
 		}
 		linea.clear();
 	}
 	
 	public void checkTrail(){
 		calculate();
-		if (grises == rojos && rojos == amarillos){
-			psuccessTrail();
-		}else if (amarillos == 0 && grises == rojos){
-			psuccessTrail();
-		}else if (grises == 0 && rojos == amarillos){
-			psuccessTrail();
-		}else if (rojos == 0 && grises == amarillos){
-			psuccessTrail();
-		}else if (linea.size() == 1){
-			nullTrail();
-		}else{
-			failTrail();
+		if ( linea.size() == 1 ){
+			nullTrail();return;
 		}
+		if (modojuego == 0){
+			if (grises == rojos){
+				psuccessTrail();
+			}else{
+				failTrail();
+			}
+		}else if (modojuego == 1){
+			if ( (grises == rojos && rojos == amarillos) ||
+				  (grises == 0 && rojos == amarillos) ||
+				  (rojos == 0 && amarillos == grises) ||
+				  (amarillos == 0 && rojos == grises)
+			   ){
+				psuccessTrail();
+			}else{
+				failTrail();
+			}
+		}else if (modojuego == 2){
+			if ( leones == morsas){
+				psuccessTrail();
+			}else{
+				failTrail();
+			}
+		}else if (modojuego == 3){
+			if ( (leones == morsas && morsas == burros) ||
+					  (leones == 0 && morsas == burros) ||
+					  (morsas == 0 && leones == burros) ||
+					  (burros == 0 && morsas == leones)
+				   ){
+					psuccessTrail();
+				}else{
+					failTrail();
+				}
+		}else if (modojuego == 4){
+			if (leones == morsas && morsas == burros && burros == osos){
+				psuccessTrail();
+			}else if ( leones == 0){
+				if ( (morsas == burros && burros == osos) ||
+						  (morsas == 0 && morsas == burros) ||
+						  (burros == 0 && leones == burros) ||
+						  (osos == 0 && morsas == leones)
+					   ){
+						psuccessTrail();
+				}
+			}else if ( morsas == 0){
+				
+			}else if ( burros == 0){
+				
+			}else if (osos == 0){
+				
+				
+			}else{
+				failTrail();
+			}
+			
+		}else if (modojuego == 3){
+				
+		}else if (modojuego == 5){
+			
+		}	
 	}
 }

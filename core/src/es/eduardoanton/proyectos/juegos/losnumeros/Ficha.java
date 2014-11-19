@@ -6,7 +6,7 @@ public class Ficha {
 	public int x;
 	public int y;
 	public int val;
-	public enum FichaColor  { ROJO, GRIS, AMARILLO, E_RODEO};
+	public enum FichaColor  { ROJO, GRIS, AMARILLO, E_RODEO, LEON, MORSA, PERRO, OSO, BURRO};
 	public FichaColor color;
 	public boolean marcada;
 	public boolean paredes[] = {false,false,false,false,false,false};
@@ -19,6 +19,11 @@ public class Ficha {
 			case 1:  this.color = FichaColor.GRIS;break;
 			case 2:  this.color = FichaColor.AMARILLO;break;
 			case 3:  this.color = FichaColor.E_RODEO;break;
+			case 10: this.color = FichaColor.LEON;break;
+			case 11: this.color = FichaColor.MORSA;break;
+			case 12: this.color = FichaColor.BURRO;break;
+			case 13: this.color = FichaColor.OSO;break;
+			case 14: this.color = FichaColor.PERRO;break;
 		}
 		
 		this.marcada = false;

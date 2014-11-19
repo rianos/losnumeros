@@ -23,8 +23,8 @@ public class IngameScreen implements Screen {
 	private LosNumeros game;
 	private SpriteBatch batch;
 	private OrthographicCamera cam;
-	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,erodeo,aa1,aa2,aa3,aa4,aa5,select,crono,l3,l5,l7;
-	private Texture p2,p3,p5,p7,p9,p11,botonp,botona,botone,botonr,boton8min;
+	private Texture fondo,red,marco,gr1,gr2,gr3,gr4,gr5,rr1,rr2,rr3,rr4,rr5,ar1,ar2,ar3,ar4,ar5,erodeo,aa1,aa2,aa3,aa4,aa5,select,crono,l3,l5,l7;
+	private Texture p2,p3,p5,p7,p9,p11,botonp,botona,botone,botonr,boton8min,bmodo;
 	private InputProcessor iproc;
 	private BitmapFont font;
 	private ShapeRenderer shapeRenderer;
@@ -58,6 +58,11 @@ public class IngameScreen implements Screen {
 		aa3 = LosNumeros.asset.get("aa3.png", Texture.class );
 		aa4 = LosNumeros.asset.get("aa4.png", Texture.class );
 		aa5 = LosNumeros.asset.get("aa5.png", Texture.class );
+		ar1 = LosNumeros.asset.get("ar1.png", Texture.class);
+		ar2 = LosNumeros.asset.get("ar2.png", Texture.class);
+		ar3 = LosNumeros.asset.get("ar3.png", Texture.class);
+		ar4 = LosNumeros.asset.get("ar4.png", Texture.class);
+		ar5 = LosNumeros.asset.get("ar5.png", Texture.class);
 		erodeo = LosNumeros.asset.get("erodeo.png", Texture.class);
 		l3 =LosNumeros.asset.get("l3.png", Texture.class );
 		l5 =LosNumeros.asset.get("l5.png", Texture.class );
@@ -71,6 +76,7 @@ public class IngameScreen implements Screen {
 		botonp = LosNumeros.asset.get("bparedes.png", Texture.class );
 		botona = LosNumeros.asset.get("bamarillas.png", Texture.class );
 		botone = LosNumeros.asset.get("bespecial.png", Texture.class);
+		bmodo = LosNumeros.asset.get("bmodo.png", Texture.class);
 		boton8min = LosNumeros.asset.get("b8minimo.png", Texture.class);
 		botonr = LosNumeros.asset.get("brodeo.png", Texture.class);
 		select = LosNumeros.asset.get("select.png", Texture.class );
@@ -98,6 +104,7 @@ public class IngameScreen implements Screen {
 		//font.draw(batch, "Grises:" + LosNumeros.gamew.grises + " Rojas: " + LosNumeros.gamew.rojos , 20 , 600);
 		font.draw(batch, "PUNTOS:" + LosNumeros.gamew.puntos, 20, 300);
 		font.draw(batch, String.format("%.0f", LosNumeros.gamew.gametime), 15, 682);
+		font.draw(batch, GameWorld.modojuegoS[GameWorld.modojuego], 15,540);
 		batch.draw(marco, 295, -25);
 		batch.draw(fondo, 344, 22);
 		
@@ -112,7 +119,7 @@ public class IngameScreen implements Screen {
 		}else{
 			batch.draw(boton8min,10,450);
 		}
-		batch.draw(botona,10,550);
+		batch.draw(bmodo,10,550);
 		batch.end();
 		/*shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
@@ -253,6 +260,16 @@ public class IngameScreen implements Screen {
 			}	
 		}else if (ficha.color == FichaColor.E_RODEO){
 			tmp = erodeo;
+		}else if (ficha.color == FichaColor.LEON){
+			tmp = ar1;
+		}else if (ficha.color == FichaColor.OSO){
+			tmp = ar2;
+		}else if (ficha.color == FichaColor.PERRO){
+			tmp = ar3;
+		}else if (ficha.color == FichaColor.MORSA){
+			tmp = ar4;
+		}else if (ficha.color == FichaColor.BURRO){
+			tmp = ar5;
 		}
 				
 		if (ficha.y % 2 == 0){

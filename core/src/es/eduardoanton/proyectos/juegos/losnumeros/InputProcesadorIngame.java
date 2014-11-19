@@ -70,7 +70,7 @@ public class InputProcesadorIngame implements InputProcessor {
 			return true;
 		}
 		if (touchpos.x > 4 && touchpos.x < 130 && touchpos.y > 550 && touchpos.y < 590 ){
-			gamew.generarAmarillas();
+			gamew.cambiarModo();
 			return true;
 		}
 		if (touchpos.x > 4 && touchpos.x < 130 && touchpos.y > 450 && touchpos.y < 490 ){
