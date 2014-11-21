@@ -530,17 +530,22 @@ public class GameWorld {
 		if (perros != 0){
 			condatos.add(perros);
 		}
-		int valor = condatos.get(0);
+		try{
+		 int valor = condatos.get(0);
+		
 		for (int item : condatos){
 			if ( valor != item){
 				ok = false;break;
 			}
 		}
-		if (ok){
+		if (ok && condatos.size() != 1){
 			psuccessTrail();
 		}else{
 			failTrail();
 		}	
+		}catch(Exception e){
+			failTrail();
+		}
 	}
 	
 	private void checkModoJuego5(){
