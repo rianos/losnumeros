@@ -1,5 +1,6 @@
 package es.eduardoanton.proyectos.juegos.losnumeros;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 import javafx.scene.shape.Line;
@@ -7,6 +8,7 @@ import javafx.scene.shape.Line;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
 
 import es.eduardoanton.proyectos.juegos.losnumeros.Ficha.FichaColor;
 
@@ -503,31 +505,45 @@ public class GameWorld {
 					failTrail();
 				}
 		}else if (modojuego == 4){
-			if (leones == morsas && morsas == burros && burros == osos){
-				psuccessTrail();
-			}else if ( leones == 0){
-				if ( (morsas == burros && burros == osos) ||
-						  (morsas == 0 && morsas == burros) ||
-						  (burros == 0 && leones == burros) ||
-						  (osos == 0 && morsas == leones)
-					   ){
-						psuccessTrail();
-				}
-			}else if ( morsas == 0){
-				
-			}else if ( burros == 0){
-				
-			}else if (osos == 0){
-				
-				
-			}else{
-				failTrail();
-			}
-			
-		}else if (modojuego == 3){
-				
+			checkModoJuego();
 		}else if (modojuego == 5){
-			
+			checkModoJuego();
 		}	
+	}
+	
+	private void checkModoJuego(){
+		ArrayList<Integer> condatos = new ArrayList<Integer>();
+		boolean ok = true;
+	
+		if (leones != 0){
+			condatos.add(leones);
+		}
+		if (morsas != 0){
+			condatos.add(morsas);
+		}
+		if (burros != 0){
+			condatos.add(burros);
+		}
+		if (osos != 0){
+			condatos.add(osos);
+		}
+		if (perros != 0){
+			condatos.add(perros);
+		}
+		int valor = condatos.get(0);
+		for (int item : condatos){
+			if ( valor != item){
+				ok = false;break;
+			}
+		}
+		if (ok){
+			psuccessTrail();
+		}else{
+			failTrail();
+		}	
+	}
+	
+	private void checkModoJuego5(){
+		
 	}
 }
